@@ -1,0 +1,5924 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1119-makeup</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Tokyo+Zoo&display=swap&family=Metal+Mania&family=Permanent+Marker&family=Tourney:wght@100&family=Trade+Winds&display=swap&family=Playball&display=swap&family=Metal&family=Playball&display=swap&family=Akronim&family=Metal&family=Playball&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Festive&family=Hanalei&family=Merienda+One&family=Yellowtail&display=swap&family=Ewert&family=Permanent+Marker&family=Tourney:wght@100&family=Trade+Winds&display=swap&family=Metal&family=Otomanopee+One&family=Playball&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Festive&family=Hanalei&family=Merienda+One&family=Vampiro+One&family=Yellowtail&display=swap&family=Zen+Tokyo+Zoo&display=swap&family=Fugaz+One&display=swap&family=Tourney:wght@100&display=swap&family=Creepster&family=Permanent+Marker&family=Tourney:wght@100&display=swap&family=Trade+Winds&display=swap&&family=Diplomata+SC&family=Permanent+Marker&family=Tourney:wght@100&family=Trade+Winds&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  
+
+  nav {
+    background-color:lightcyan; 
+     padding: 1rem; 
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+
+  }
+ 
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    
+  }
+    
+  .page2{
+    padding: 2rem;
+    text-align: center;
+  }
+    
+  .header-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .notification-icon,
+  .profile-icon,
+  .nav-icon span {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .nav-icon {
+    display: none;
+  }
+  
+  .user-nav-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+  }
+  .user-nav-links.active {
+    display: flex;
+    top: 60px;
+    right: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .nav-icon {
+      display: block;
+    }
+    .user-nav-links {
+      padding: 10px 0;
+      top: -100%;
+      flex-direction: column;
+      position: absolute;
+      right: 0;
+      transition: right 0.3s ease;
+      background-color: white;
+      width: 100%;
+      display: none;
+    }
+  }
+  
+  /* Notification Container */
+  .notification-container,
+  .profile-container {
+    position: fixed;
+    top: 60px;
+    right: -400px;
+    width: 300px;
+    height: calc(100vh - 60px);
+    background-color: aliceblue;
+    background-position: center;
+    background-size: cover;
+    color:black;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    z-index: 999;
+
+  }
+  
+  .notification-container h2,
+  .profile-container h2 {
+    margin-bottom: 15px;
+  }
+  
+  .notification-content,
+  .profile-content {
+    overflow-y: auto;
+    max-height: calc(100vh - 140px);
+  }
+  .profile-content p {
+    color: black;
+  }
+  .pf-cont {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: space-between;
+  }
+  .close-btn2 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: mediumvioletred;
+    cursor: pointer;
+   
+    height: 40px;
+    width: 40px;
+    align-items: center;
+  }
+  
+  .logout-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color:palevioletred;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Overlay for dark theme */
+  .overlay {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background-color: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s ease;
+    z-index: 1;
+  }
+  
+  .overlay.active {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .notification-container.show,
+  .profile-container.show {
+    right: 0;
+  }
+  
+  .modeToggle-icon {
+    /* background-color: #000; */
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    border-radius: 50%;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 5%;
+    border-top-right-radius: 5%;
+    bottom: 45%;
+    right: 2px;
+    padding: 5px;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+  }
+  
+  body.dark-mode .modeToggle-icon {
+    background-color: palevioletred;
+  }
+  
+  .toggle-moon-icon {
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    color: #000;
+  }
+  .toggle-sun-icon {
+    display: block;
+    height: 40px;
+    width: 40px;
+    color: #fff;
+  }
+  
+  body.dark-mode .page {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  body.light-mode .toggle-moon-icon {
+    display: none;
+    /* width: 30px; */
+  }
+  
+  
+  
+  body.dark-mode .toggle-sun-icon {
+    display: none;
+    /* width: 30px; */
+  }
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    background:whitesmoke;
+    height: 60px;
+    
+  }
+  .general-header .logo {
+    font-size: 5rem;
+    font-family: 'Playball', cursive;
+    color:mediumvioletred;
+  }
+  
+  
+  .general-header .logo i {
+    color: darkblue;
+  }
+  .general-header{
+    height: 80px;
+  }
+  .user-header .logo {
+    font-size: 3rem;
+    font-family: 'Playball', cursive;
+    color:mediumvioletred;
+  }
+  .user-header .logo i {
+    color: darkblue;
+  }
+  .user-header{
+    height: 80px;
+  }
+ 
+.logo img{
+    font-size: 50px;
+}
+
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  /*  */
+  :root {
+    --orange: #ff7800;
+    --blacl: #130f40;
+    --light-color: #666;
+    --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    --border: 0.2rem solid rgba(0, 0, 0, 0.1);
+    --outline: 0.1rem solid rgba(0, 0, 0, 0.1);
+    --outline-hover: 0.2rem solid var(var(--black));
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all 0.2s linear;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .btn {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 1rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: 0.2rem solid black;
+    color: brown;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background: black;
+    color: #fff;
+  }
+  /* login-page */
+  .login {
+    text-align: center;
+    position: relative;
+    width: 400px;
+    min-height: 500px;
+    background: url("images/about-bg.jpg") no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.444);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px 0; 
+  } @media (max-width:480px){
+         .login{
+          width:calc(100% - 20px);
+          margin: 0 10px;
+         }
+      }
+  .page1 {
+    
+    text-align: center;
+    background: url("images/loginmain.jpg") no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: calc(100vh  - 80px);
+      
+    
+  }
+  
+  .page1 h1{
+    color:mediumvioletred;
+    font-size: 4rem;
+  }
+  
+  /* login */
+   
+  .login .form-box {
+    width: 100%;
+    padding: 40px;
+  }
+  .form-box h2 {
+    font-size: 3rem;
+    color: mediumvioletred;
+    text-align: center;
+  }
+  .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid palevioletred;
+    margin: 30px 0;
+  }
+  .input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 6rem;
+    color:mediumvioletred;
+    font-weight: 500;
+    pointer-events: none;
+    transition: -5px;
+  }
+  .input-box input:focus ~ label,
+  .input-box input:valid ~ label {
+    top: -5px;
+  }
+  .input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 2rem;
+    color:mediumvioletred;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+  }
+  .input-box .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1.2rem;
+    color:mediumvioletred;
+    line-height: 57px;
+  }
+  .button {
+    width: 100%;
+    height: 45px;
+    background:mediumvioletred;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-style: 1em;
+    color: #fff;
+    font-weight: 500;
+  }
+  
+  /*  */
+  .logo img {
+    width: 50px;
+    height: 50px;
+    
+  }
+  .logo h2 {
+    color: blue;
+  }
+  .navigation a {
+    position: relative;
+    font-size: 1.1rem;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+  }
+  .navigation a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: darkmagenta;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+  }
+  .navigation a:hover:after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  .navigation .btn-logo {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: black;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: 0.5s;
+  }
+  .navigation .btn-logo:hover {
+    background: #0e686e;
+    color: #162938;
+  }
+  
+  
+  .log-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    background: lightgrey; 
+    height: 100px;
+  }
+  
+  .log-header .logo {
+    font-size: 2rem;
+    font-weight: bolder;
+    color: black;
+  }
+  .log-header .logo i {
+    color: darkmagenta;
+  }
+  .log-header .navbar a {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: darkmagenta;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+  }
+  .log-header .navbar a:hover {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  /* / */
+  
+  .form {
+    --bg-light: #efefef;
+    --bg-dark: #707070;
+    --clr:white;
+    --clr-alpha: #9c9c9c60;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 300px;
+    font-size: 1.5rem;
+  }
+  
+  .form .input-span {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .input-span input{
+    height: 40px;
+    width: 20px;
+    
+  }
+  .form .input-span2 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #e84393;
+
+  
+  }
+  .input-span2 input{
+    height: 20px;
+    width: 20px;
+  }
+  .form input[type="text"],
+  .form input[type="email"],
+  .form input[type="password"] {
+    border-radius: 0.5rem;
+    padding: 1rem 0.75rem;
+    width: 100%;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--clr-alpha);
+    outline: 2px solid var(--bg-dark);
+  }
+  .form input[type="text"]:focus,
+  .form input[type="email"]:focus,
+  .form input[type="password"]:focus {
+    outline: 2px solid var(--clr);
+  }
+  
+  .label {
+    align-self: flex-start;
+    color: var(--clr);
+    font-weight: 600;
+  }
+  
+  .form .submit {
+    padding: 1rem 0.75rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 3rem;
+    background-color: var(--bg-dark);
+    color: var(--bg-light);
+    border: none;
+    cursor: pointer;
+    transition: all 300ms;
+    font-weight: 600;
+    font-size: 1.6rem;
+  }
+  
+  .form .submit:hover {
+    background-color: palevioletred;
+    color: var(--bg-dark);
+  }
+  .form .verifi {
+    padding: 1rem 0.75rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 3rem;
+    background-color: var(--bg-dark);
+    color: var(--bg-light);
+    border: none;
+    cursor: pointer;
+    transition: all 300ms;
+    font-weight: 600;
+    font-size: 1.8rem;
+  }
+  
+  .form .verifi:hover {
+    background-color: palevioletred;
+    color: var(--bg-dark);
+  }
+  
+  
+  .span {
+    text-decoration: none;
+    color: var(--bg-dark);
+  }
+  
+  .span a {
+    color: var(--clr);
+  }
+  
+  /*  */
+    
+  
+  /*  */
+  .error{
+    color: red;
+    font-size: 12px;
+  }
+  
+  /* 
+   */
+  
+  .fa-eye{
+    position: relative;
+    top: -40px;
+    left: 45%;
+  
+  }
+  .fa-eye-slash{
+    position: relative;
+    top: -40px;
+    left: 45%;
+  }
+  #hide1{
+    display: none;
+  }
+  #hide3{
+    display: none;
+  }
+
+
+
+  /*  */
+  /*-----------------------------------*\
+  #style.css
+\*-----------------------------------*/
+
+/**
+ *
+ */
+  
+  navbar-new ul li {
+    margin: 0 1rem;
+  } 
+  
+  .navbar-new ul li a {
+    color:black;
+    text-decoration: none;
+    position: relative;
+  font-size: 2.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 40px;
+  font-family: 'Playball', cursive;
+  align-items: center;
+  
+  }
+  .navbar-new ul li a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background:mediumvioletred;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+    
+  
+  }
+  .navbar-new ul li a:hover:after{
+    transform: scaleX(1);
+    transform-origin: left;
+  
+  }
+   
+/* 
+ /* */ 
+ /*  */
+ /*  */
+ /*  */
+/*  */
+/* new style */
+/* 
+  /*-----------------------------------*\
+  #main.css
+\*-----------------------------------*/
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;1,100;1,300&display=swap");
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  -webkit-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+html::-webkit-scrollbar {
+  width: 1rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #e84393;
+}
+
+section {
+  padding: 5rem  5%;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  border: 0.2rem solid #222;
+  background: #fff;
+  padding: 1rem 3rem;
+  font-size: 1.7rem;
+  cursor: pointer;
+  color: #222;
+}
+
+.btn:hover {
+  color: #fff;
+  background: #e84393;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.heading h1 {
+  font-size: 3.5rem;
+  color: mediumvioletred;
+}
+
+.heading p {
+  margin: 1rem auto;
+  font-size: 1.5rem;
+  color: #777;
+  max-width: 50rem;
+  line-height: 2;
+}
+
+@-webkit-keyframes fadeUp {
+  0% {
+    -webkit-transform: translateY(4rem);
+            transform: translateY(4rem);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    -webkit-transform: translateY(4rem);
+            transform: translateY(4rem);
+    opacity: 0;
+  }
+}
+.home {
+  padding: 0;
+}
+
+.home .slide {
+  display: none;
+  height: calc(100vh - 8rem);
+}
+
+.home .slide.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.home .slide .content {
+  width: 50%;
+  padding: 2rem 7%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  background: #fce9f2;
+  position: relative;
+}
+
+.home .slide .content img {
+  height: 25rem;
+  width: 25rem;
+  margin-bottom: 2rem;
+  -webkit-animation: fadeUp .2s linear backwards .2s;
+          animation: fadeUp .2s linear backwards .2s;
+  display: none;
+}
+
+.home .slide .content span {
+  color: #e84393;
+  display: block;
+  font-size: 2rem;
+  padding-bottom: .5rem;
+  letter-spacing: .2rem;
+  text-transform: uppercase;
+  -webkit-animation: fadeUp .2s linear backwards .4s;
+          animation: fadeUp .2s linear backwards .4s;
+}
+
+.home .slide .content h3 {
+  font-size: 5.5rem;
+  text-transform: uppercase;
+  color: #222;
+  -webkit-animation: fadeUp .2s linear backwards .6s;
+          animation: fadeUp .2s linear backwards .6s;
+}
+
+.home .slide .content .btn {
+  -webkit-animation: fadeUp .2s linear backwards .8s;
+          animation: fadeUp .2s linear backwards .8s;
+}
+
+.home .slide .content .controls {
+  position: absolute;
+  bottom: 12%;
+  right: -7rem;
+}
+
+.home .slide .content .controls div {
+  height: 5rem;
+  width: 5rem;
+  line-height: 5rem;
+  text-align: center;
+  font-size: 3rem;
+  background: #fff;
+  color: #222;
+  margin: 0 1rem;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.home .slide .content .controls div:hover {
+  background: #e84393;
+  color: #fff;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.home .slide .image {
+  width: 50%;
+}
+
+.home .slide .image img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.category {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(16rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 2rem;
+}
+
+.category .box {
+  padding: 2rem;
+  border-radius: .5rem;
+  background: #f5f5f5;
+  text-align: center;
+}
+
+.category .box:hover {
+  background: #222;
+}
+
+.category .box:hover img {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.category .box:hover p {
+  color: #fff;
+}
+
+.category .box img {
+  height: 10rem;
+  margin-bottom: 1rem;
+}
+
+.category .box p {
+  font-size: 1.7rem;
+  color: #222;
+}
+
+.about {
+  background: url(images/about-bg.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.about .content {
+  width: 55rem;
+  background: #fff;
+  padding: 3rem;
+}
+
+.about .content span {
+  color: #e84393;
+  font-size: 2rem;
+}
+
+.about .content h3 {
+  padding-top: 1rem;
+  font-size: 3rem;
+  color: #222;
+}
+
+.about .content p {
+  font-size: 1.5rem;
+  color: #777;
+  line-height: 2;
+  padding: 1rem 0;
+}
+.about .content a{
+    font-size: 3rem;
+    font-family: 'Playball', cursive;
+    color:mediumvioletred;
+}
+
+.shop .slide {
+  border: 0.2rem solid #222;
+  background: #fff;
+}
+
+.shop .slide:hover .image img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.shop .slide:hover .image .icons {
+  right: 1rem;
+}
+
+.shop .slide .image {
+  height: 35rem;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.shop .slide .image .discount {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: .5rem 1.5rem;
+  font-size: 1.5rem;
+  color: #fff;
+  background: #e84393;
+  z-index: 10;
+}
+
+.shop .slide .image img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.shop .slide .image .icons {
+  position: absolute;
+  bottom: 0;
+  right: -8rem;
+}
+
+.shop .slide .image .icons a {
+  height: 5rem;
+  width: 5rem;
+  line-height: 4.5rem;
+  font-size: 2rem;
+  background: #fff;
+  color: #222;
+  border: 0.2rem solid #222;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  text-align: center;
+  display: block;
+}
+
+.shop .slide .image .icons a:hover {
+  background: #e84393;
+  color: #fff;
+}
+
+.shop .slide .content {
+  padding: 2rem;
+  border-top: 0.2rem solid #222;
+}
+
+.shop .slide .content .stars {
+  padding-bottom: .5rem;
+}
+
+.shop .slide .content .stars i {
+  font-size: 1.5rem;
+  color: var(--orange);
+}
+
+.shop .slide .content p {
+  font-size: 2rem;
+  color: #222;
+  line-height: 2;
+}
+
+.shop .slide .content .price {
+  font-size: 2rem;
+  color: #e84393;
+}
+
+.shop .slide .content .price span {
+  font-size: 1.5rem;
+  color: #777;
+  text-decoration: line-through;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 2rem;
+  color: #222;
+}
+
+.gallery {
+  background: #f5f5f5;
+}
+
+.gallery .lightbox {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(31rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(31rem, 1fr));
+  gap: 2rem;
+}
+
+.gallery .lightbox a {
+  height: 30rem;
+  overflow: hidden;
+  border: 1rem solid #fff;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.gallery .lightbox a:hover img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.gallery .lightbox a img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.team {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #f5f5f5), color-stop(50.1%, #fff));
+  background: linear-gradient(#f5f5f5 50%, #fff 50.1%);
+}
+
+.team .box-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(31rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(31rem, 1fr));
+  gap: 2rem;
+}
+
+.team .box-container .box {
+  border: 0.2rem solid #222;
+  text-align: center;
+}
+
+.team .box-container .box:hover .image img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.team .box-container .box:hover .image .share {
+  left: 0;
+}
+
+.team .box-container .box .image {
+  height: 50rem;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.team .box-container .box .image img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.team .box-container .box .image .share {
+  position: absolute;
+  top: 0;
+  left: -8rem;
+  background: #222;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 1rem;
+  gap: 1rem;
+}
+
+.team .box-container .box .image .share a {
+  height: 5rem;
+  width: 5rem;
+  border: 0.2rem solid #fff;
+  font-size: 2.5rem;
+  color: #fff;
+  line-height: 5rem;
+}
+
+.team .box-container .box .image .share a:hover {
+  background: #fff;
+  color: #222;
+}
+
+.team .box-container .box .content {
+  border-top: 0.2rem solid #222;
+  padding: 1.5rem;
+}
+
+.team .box-container .box .content h3 {
+  font-size: 2rem;
+  color: #222;
+}
+
+.team .box-container .box .content p {
+  font-size: 1.5rem;
+  color: #e84393;
+}
+
+.arrivals .slide {
+  text-align: center;
+  background: #fff;
+}
+
+.arrivals .slide:hover .image img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.arrivals .slide .image {
+  height: 30rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.arrivals .slide .image img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.arrivals .slide .content {
+  padding-top: .5rem;
+}
+
+.arrivals .slide .content p {
+  font-size: 2rem;
+  color: #222;
+  line-height: 2;
+  padding: .5rem 0;
+}
+
+.arrivals .slide .content .price {
+  font-size: 2rem;
+  color: #e84393;
+}
+
+.arrivals .slide .content .price span {
+  color: #777;
+  font-size: 1.5rem;
+  text-decoration: line-through;
+}
+
+.reviews-slider .slide .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+.reviews-slider .slide .user img {
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+}
+
+.reviews-slider .slide .user h3 {
+  font-size: 2rem;
+  color:#e84393;
+}
+
+.reviews-slider .slide .user .stars i {
+  font-size: 1.5rem;
+  color: var(--orange);
+}
+
+.reviews-slider .slide .text {
+  padding: 2rem;
+  background: #f5f5f5;
+  border-radius: .5rem;
+  line-height: 2;
+  font-size: 1.5rem;
+  color: #777;
+  position: relative;
+  margin-top: 2rem;
+}
+
+.reviews-slider .slide .text::before {
+  content: '';
+  position: absolute;
+  top: -1rem;
+  left: 3rem;
+  height: 2rem;
+  width: 2rem;
+  background: #f5f5f5;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.service {
+  background: #f5f5f5;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(31rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(31rem, 1fr));
+  gap: 2rem;
+}
+
+.service .box {
+  border: 0.2rem solid #222;
+  padding: 2rem;
+  text-align: center;
+  background: #fff;
+}
+
+.service .box:hover {
+  background: #222;
+}
+
+.service .box:hover img {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.service .box:hover h3 {
+  color: #fff;
+}
+
+.service .box:hover p {
+  color: #fff;
+}
+
+.service .box img {
+  height: 8rem;
+  margin-bottom: .5rem;
+}
+
+.service .box h3 {
+  padding: .7rem 0;
+  font-size: 2rem;
+  color: #222;
+}
+
+.service .box p {
+  font-size: 1.5rem;
+  color: #777;
+  line-height: 2;
+}
+
+.blogs .slide:hover .image img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.blogs .slide:hover .image .icons {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.blogs .slide .image {
+  height: 30rem;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.blogs .slide .image img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.blogs .slide .image .icons {
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-transform: translateY(10rem);
+          transform: translateY(10rem);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1.5rem;
+  border: 0.2rem solid #222;
+  z-index: 10;
+}
+
+.blogs .slide .image .icons a {
+  font-size: 1.5rem;
+  color: #222;
+}
+
+.blogs .slide .image .icons a i {
+  color: #e84393;
+  padding-right: .5rem;
+}
+
+.blogs .slide .image .icons a:hover {
+  color: #e84393;
+}
+
+.blogs .slide .content {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.blogs .slide .content h3 {
+  font-size: 2rem;
+  color: #222;
+}
+
+.blogs .slide .content p {
+  padding: 1rem 0;
+  line-height: 2;
+  color: #777;
+  font-size: 1.5rem;
+}
+
+.footer {
+  background: #f5f5f5;
+}
+
+.footer .box-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(25rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 2rem;
+}
+
+.footer .box-container .box h3 {
+  font-size: 2.2rem;
+  color: #222;
+  padding: 1rem 0;
+}
+
+.footer .box-container .box .link {
+  padding: 1rem 0;
+  display: block;
+  font-size: 1.5rem;
+  color: #777;
+}
+
+.footer .box-container .box .link i {
+  padding-right: .5rem;
+  color: #e84393;
+}
+
+.footer .box-container .box .link:hover {
+  color: #e84393;
+}
+
+.footer .box-container .box .link:hover i {
+  padding-right: 2rem;
+}
+
+.footer .box-container .box p {
+  font-size: 1.5rem;
+  color: #777;
+  padding: 1rem 0;
+}
+
+.footer .box-container .box p i {
+  padding-right: .5rem;
+  color: #e84393;
+}
+
+.footer .box-container .box .share {
+  margin-top: 2rem;
+}
+
+.footer .box-container .box .share a {
+  height: 5rem;
+  width: 5rem;
+  background: #fff;
+  border: 0.2rem solid #222;
+  font-size: 2rem;
+  line-height: 4.5rem;
+  color: #222;
+  text-align: center;
+  margin-right: .3rem;
+}
+
+.footer .box-container .box .share a:hover {
+  background: #e84393;
+  color: #fff;
+}
+
+.footer .box-container .box form .email {
+  width: 100%;
+  border: 0.2rem solid #222;
+  padding: 1.2rem 1.4rem;
+  font-size: 1.6rem;
+  color: #777;
+  text-transform: none;
+  margin: 1rem 0;
+}
+
+.footer .credit {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 3rem;
+  padding: 1rem;
+  border-top: 0.2rem solid #222;
+  padding-top: 3rem;
+  color: #777;
+}
+
+.footer .credit span {
+  color: #e84393;
+}
+.footer a{
+    color:mediumvioletred;
+      font-family: 'Playball', cursive;
+}
+
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+  .header {
+    padding: 1.5rem 2rem;
+  }
+  section {
+    padding: 3rem 2rem;
+  }
+  .home .slide .content {
+    padding: 2rem;
+  }
+  .home .slide .content span {
+    font-size: 2rem;
+  }
+  .home .slide .content h3 {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header #search-btn {
+    display: inline-block;
+  }
+  .header .search-form {
+    position: absolute;
+    top: 99%;
+    left: 0;
+    border-top: 0.2rem solid #222;
+    border-bottom: 0.2rem solid #222;
+    width: 100%;
+    background: #fff;
+    height: 6rem;
+    display: none;
+    -webkit-animation: fadeUp .2s linear backwards;
+            animation: fadeUp .2s linear backwards;
+  }
+  .header .search-form.active {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .home .slide {
+    position: relative;
+    height: calc(100vh - 6rem);
+  }
+  .home .slide .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    height: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .home .slide .content img {
+    display: inline-block;
+  }
+  .home .slide .content .controls {
+    position: static;
+    margin-top: 7rem;
+  }
+  .home .slide .content .controls div {
+    margin: 0 .5rem;
+  }
+  .home .slide .image {
+    width: 100%;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+}
+/*# sourceMappingURL=style.css.map */
+
+
+.filters {
+    padding: 20px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ddd;
+}
+
+#search {
+    padding: 8px;
+    width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+select {
+    padding: 8px;
+    margin-left: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.product-catalog {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+}
+
+.product-card .info {
+    padding: 15px;
+}
+
+.product-card .info h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.product-card .info p {
+    font-size: 14px;
+    color: #555;
+}
+
+.product-card .info .price {
+    font-weight: bold;
+    color: #e60000;
+}
+
+.product-card .info .reviews {
+    font-size: 12px;
+    color: #888;
+}
+
+.product-card .info .reviews span {
+    color: #ff9900;
+}
+
+
+
+
+
+/* community */
+
+.gallery-container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.new-post {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.new-post input {
+    margin-right: 10px;
+}
+
+.new-post button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.new-post button:hover {
+    background-color: #218838;
+}
+
+.post-gallery {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+}
+
+.single-post {
+    background-color:lightcyan;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 380px;
+    text-align: center;
+    align-items: center;
+}
+.single-post h3{
+  color:green;
+  font-size: 2rem;
+  margin: 2px;
+}
+.single-post p{
+  font-size: 1.5rem;
+  margin: 2px;
+}
+
+.single-post img {
+    width: 100%;
+    height: 200px; /* Fixed height for the image */
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.post-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    
+    
+}
+
+button {
+    background-color: palevioletred;
+    color: white;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+    
+}
+
+button:hover {
+    background-color:#28a745;
+}
+
+button.active {
+    background-color: palevioletred;
+}
+
+button.inactive {
+    background-color: #dc3545;
+}
+
+.comment-input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.comments-section {
+    margin-top: 10px;
+}
+
+.comment-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.comment-list li {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f1f1f1;
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.comment-list button {
+    background-color: red;
+    color: white;
+    padding: 2px 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.comment-list button:hover {
+    background-color: #b30000;
+}
+
+/* Popup styling */
+.popup-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    text-align: center;
+}
+
+.popup-box button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.popup-box button:hover {
+    background-color: #c82333;
+}
+ /* reviews own */
+ 
+ .heading {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .heading h1 {
+            font-size: 36px;
+            color: mediumvioletred;
+        }
+
+        .heading p {
+            font-size: 18px;
+            color: #777;
+        }
+
+        .container-r {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .review-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .review-form h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .review-form label {
+            font-size: 16px;
+            margin: 10px 0 5px;
+            display: block;
+        }
+
+        .review-form input,
+        .review-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .review-form button {
+            padding: 10px 20px;
+            background-color:palevioletred;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .review-form button:hover {
+            background-color:#28a745;
+        }
+
+        .reviews {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .reviews h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .reviews .review-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .reviews .review-item h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .reviews .review-item p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .reviews .review-item .delete-button {
+            background-color: transparent;
+            border: none;
+            color: palevioletred;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .reviews .review-item .delete-button:hover {
+            text-decoration: underline;
+        }
+
+        .reviews .review-item .rating {
+            font-size: 16px;
+            color: palevioletred;
+        }
+
+        #aggregated-rating {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+/* 
+ /*achivement */ 
+ 
+.container-a {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.container-a .user-profile {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container-a .profile-header {
+    display: flex;
+    align-items: center;
+}
+
+.container-a .profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+    object-fit: cover;
+}
+
+.container-a h2, h3 {
+    margin: 10px 0;
+    font-size: 2rem;
+}
+
+.user-stats {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-item {
+    margin: 10px 0;
+}
+
+.stat-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.badges {
+    display: flex;
+    gap: 10px;
+}
+
+.badge-img {
+    width: 60px;
+    height: 60px;
+   
+    object-fit: cover;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+
+}
+.insights h4{
+  font-size: 1.5rem;
+  margin: 2px;
+}
+.insights p{
+  font-size: 1.5rem;
+  margin: 2px;
+}
+.container-a button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.container-a button:hover {
+    background-color: #45a049;
+}
+
+.insight-item, .notification-container {
+    margin-bottom: 20px;
+}
+
+.notification-container {
+    background-color: #ffeb3b;
+    padding: 10px;
+    border-radius: 5px;
+    display: none; /* Hidden initially */
+}
+
+.notification-container p {
+    margin: 0;
+}
+
+.container-a .review-item {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.container-a .delete-review-btn {
+    background-color: palevioletred;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    float: right;
+}
+
+.container-a .delete-review-btn:hover {
+    background-color:#28a745;
+}
+
+.container-a button:disabled {
+    background-color: #ddd;
+}
+/* choose */
+
+.container-c {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.container-c h2, h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.container-c .profile-customization,
+.ar-customization,
+.customization-display {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.ar-customization label{
+   font-size: 1.5rem;
+}
+.container-c .profile-picture {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.container-c .profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.container-c input[type="file"] {
+    padding: 5px;
+    font-size: 1.5rem;
+}
+
+.container-c .user-info label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+
+.container-c .user-info input,
+.user-info textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1.3rem;
+}
+
+.container-c textarea {
+    height: 80px;
+}
+
+.container-c button {
+    padding: 10px 20px;
+    background-color: palevioletred;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.container-c button:hover {
+    background-color: #45a049;
+}
+
+.container-c button:disabled {
+    background-color: #ccc;
+}
+
+.container-c select {
+    width: 100%;
+    padding: 8px;
+    font-size: 1.3rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.container-c .save-settings {
+    text-align: center;
+}
+
+.container-c .customization-display {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.container-c .customization-display p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.container-c #reset-btn {
+    background-color: palevioletred;
+    color: white;
+}
+
+.container-c #reset-btn:hover {
+    background-color: green;
+}
+
+.container-c .popup-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    margin: 1px;
+}
+
+.container-c .popup-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    width: 50px;
+    font-size: 1.2rem;
+    margin: 1px;
+}
+
+ .popup-content img {
+    width: 80px;
+    height: 80px;
+    border-radius: 30%;
+ 
+}
+
+.container-c #close-popup-btn {
+    background-color:palevioletred;
+    color: white;
+}
+
+.container-c #close-popup-btn:hover {
+    background-color:#28a745;
+}
+/* notification */
+
+.container-n {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container-n h1, h2, h3 {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.container-n input, button {
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1.5rem;
+}
+.reminder-section label{
+  font-size: 1.5rem;
+}
+.reminder-section input,textarea{
+  width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+.container-n button {
+    cursor: pointer;
+    background-color:palevioletred;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.container-n button:hover {
+    background-color: #218838;
+}
+
+.container-n .reminder-list {
+    margin-top: 20px;
+}
+
+.container-n .reminder-list ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 1rem;
+    
+}
+
+.container-n .reminder-list li {
+    background-color: #e9ecef;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.container-n .popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container-n .popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.container-n #close-popup-btn {
+    background-color: palevioletred;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.container-n #close-popup-btn:hover {
+    background-color:green;
+}
+/* help & support */
+
+.container-h {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container-h h2 {
+    font-size: 2remrem;
+    margin-bottom: 15px;
+}
+
+.container-h section {
+    margin-bottom: 30px;
+}
+
+.container-h .faq-item {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.container-h .faq-question {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.container-h .faq-answer {
+    display: none;
+    margin-top: 10px;
+    color: #555;
+    font-size: 1.5rem;
+}
+
+.container-h button {
+    background-color: palevioletred;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.container-h button:hover {
+    background-color: green;
+}
+
+.container-h form label {
+    display: block;
+    margin-top: 15px;
+}
+
+.container-h form textarea {
+    width: 100%;
+    height: 100px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+ .feedback label{
+  font-size: 1.5rem;
+ }
+.container-h form select {
+    margin-top: 5px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.container-h #feedback-status {
+    margin-top: 15px;
+    font-weight: bold;
+    color: green;
+}
+/* camara */
+
+.container-m {
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.container-m h1, h2 {
+    color: #333;
+}
+
+.container-m .ar-view {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.container-m #camera-stream {
+    width: 100%;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+.container-m #makeup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.container-m .lipstick-overlay,
+.eyebrow-overlay,
+.foundation-overlay,
+.hairstyle-overlay {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.container-m .lipstick-overlay {
+    width: 80px;
+    height: 20px;
+    bottom: 20%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.container-m .eyebrow-overlay {
+    width: 70px;
+    height: 15px;
+    top: 20%;
+    left: 30%;
+    transform: translate(-50%, 0);
+}
+
+.container-m .foundation-overlay {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(245, 214, 186, 0.5);
+    z-index: -1;
+    border-radius: 0;
+}
+
+.container-m .hairstyle-overlay {
+    width: 100px;
+    height: 50px;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.container-m .controls {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.container-m label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 1.5rem;
+}
+
+.container-m input[type="color"],
+select,
+button {
+    margin-bottom: 15px;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+}
+
+.container-m .saved-looks {
+    margin-top: 20px;
+}
+
+.container-m .saved-look {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.container-m .saved-look button {
+    margin-left: 10px;
+}
+
+
+/*  */
+/* new style */
+/* 
+ 
+
+/*  */
+ </style>
+  </head>
+  <body class="light-mode">
+    <!-- General User Header -->
+    <header id="general-header" class="general-header">
+      
+      <nav class="navbar-new">
+        
+         <a href="#"  onclick="showPage('home')" class="logo"><img src="images/logo.png" alt="">Blush</a> 
+        <ul>
+          <li><a href="#" id="home-link">Home</a></li>
+          <li><a href="#" id="login-link">Login</a></li>
+          <!-- <li><a href="#" id="register-link">Register</a></li> -->
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Logged-in User Header -->
+    <header id="user-header" class="user-header">
+      <nav class="navbar-new">
+        <a href="#"  onclick="showPage('home')" class="logo"><img src="images/logo.png" alt="">Blush</a> 
+        <ul class="user-nav-links">
+          <li><a href="#" id="home-user-link">Home</a></li>
+          <li><a href="#" id="sample-1-link">Blush Gallery</a></li>
+          <li><a href="#" id="sample-2-link">Support</a></li>
+          
+          
+        </ul>
+        <div class="header-icons">
+       
+          <div class="profile-icon" id="profileIcon">
+            <span>&#128100;</span>
+          </div>
+          <div class="nav-icon" id="navToggleIcon">
+            <span>&#9776;</span>
+          </div>
+        </div>
+        
+      </nav>
+      
+      
+
+      <div id="modeToggle" class="modeToggle-icon">
+        <img
+          src="https://res.cloudinary.com/dzrc9ejln/image/upload/v1729097552/half-moon_1_xgpusv.png"
+          class="toggle-moon-icon"
+          alt=""
+        />
+        <!-- <ion-icon name="sunny-outline" class="toggle-sun-icon"></ion-icon>
+        <ion-icon name="moon-outline" class="toggle-moon-icon"></ion-icon> -->
+        <img
+          src="https://res.cloudinary.com/dzrc9ejln/image/upload/v1729096535/sun_q4ad24.png"
+          class="toggle-sun-icon"
+          alt=""
+        />
+      </div>
+    </header>
+
+    <div class="notification-container" id="notificationContainer">
+      <button class="close-btn2" id="closeNotificationBtn">&times;</button>
+      <h2>Notifications</h2>
+      <div class="cafe-notification-content" id="notify-alert-cont"></div>
+    </div>
+
+    <div class="profile-container" id="profileContainer">
+      <button class="close-btn2" id="closeProfileBtn">&times;</button>
+      <div class="pf-cont">
+        <h2>User Profile</h2>
+        <div class="profile-content">
+          <p><strong>Name:</strong> <span id="user-name-text"></span></p>
+          <p><strong>Email:</strong> <span id="user-name-email"></span></p>
+          <button class="logout-btn" id="update-link">Update</button>
+          <button class="logout-btn" id="logout-link">Logout</button>
+         
+          
+         
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Main Content Sections -->
+    <main>
+      <!-- Home Page -->
+      <section id="home-page" class="page" >
+        <!-- <h1>Home Page</h1>
+        <p>Welcome to the home page.</p> -->
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <!--  -->
+           
+
+<!-- navbar section  -->
+
+<nav class="navbar">
+    <div id="close-navbar" class="fas fa-times"></div>
+    <a href="#home">home</a>
+    <a href="#shop">shop</a>
+    <a href="#gallery">gallery</a>
+    <a href="#team">team</a>
+    <a href="#arrivals">arrivals</a>
+    <a href="#blogs">blogs</a>
+</nav>
+
+<!-- navbar section  -->
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <div class="slide active">
+        <div class="content">
+            <img src="images/content-img-1.png" alt="">
+            <span>cosmetics </span>
+        
+            <h3>"Beauty begins the moment you decide to be yourself."</h3>
+
+            
+            <div class="controls">
+                <div class="fas fa-angle-left" onclick="prev()"></div>
+                <div class="fas fa-angle-right" onclick="next()"></div>
+            </div>
+        </div>
+        <div class="image">
+            <img src="images/home-img-1.png" alt="">
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="content">
+            <img src="images/content-img-2.png" alt="">
+            <span>Accessoriess</span>
+            <h3>
+                "Give a woman the right lipstick, and she can conquer the world."</h3>
+            
+            <div class="controls">
+                <div class="fas fa-angle-left" onclick="prev()"></div>
+                <div class="fas fa-angle-right" onclick="next()"></div>
+            </div>
+        </div>
+        <div class="image">
+            <img src="images/home-img-2.png" alt="">
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="content">
+            <img src="images/content-img-3.png" alt="">
+            <span>skin care</span>
+            <h3>"Sometimes you just need a little mascara to brighten up your day."</h3>
+            
+            <div class="controls">
+                <div class="fas fa-angle-left" onclick="prev()"></div>
+                <div class="fas fa-angle-right" onclick="next()"></div>
+            </div>
+        </div>
+        <div class="image">
+            <img src="images/home-img-3.png" alt="">
+        </div>
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- category section starts  -->
+
+<section class="category">
+
+    <a href="#" class="box">
+        <img src="images/category-1.png" alt="">
+        <p>cosmetics</p>
+    </a>
+
+    <a href="#" class="box">
+        <img src="images/category-2.png" alt="">
+        <p>makeup</p>
+    </a>
+
+    <a href="#" class="box">
+        <img src="images/category-3.png" alt="">
+        <p>powder</p>
+    </a>
+
+    <a href="#" class="box">
+        <img src="images/category-4.png" alt="">
+        <p>lotions</p>
+    </a>
+
+    <a href="#" class="box">
+        <img src="images/category-5.png" alt="">
+        <p>lipstick</p>
+    </a>
+
+    <a href="#" class="box">
+        <img src="images/category-6.png" alt="">
+        <p>mascara</p>
+    </a>
+
+</section>
+
+<!-- category section ends -->
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+    <div class="content">
+        <span>why choose us?</span>
+        <h3>makeup makes difference</h3>
+        <p>The primary goal of a makeup Blush is to provide products that help customers express themselves, boost their confidence, and achieve desired looks for various occasions</p>
+        <a href="#"  onclick="showPage('home')" class="logo"><img src="images/logo.png" alt="">Blush</a> 
+    </div>
+    
+</section>
+
+<!-- about section ends -->
+
+<!-- shop section starts  -->
+
+<section class="shop" id="shop">
+
+    <div class="heading">
+        <h1>featured products</h1>
+        <p>"Makeup is not about covering flaws but enhancing your uniqueness."</p>
+        <p>"The most beautiful makeup of a woman is passion. But cosmetics are easier to buy."</p>
+    </div>
+
+    <div class="swiper products-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <span class="discount">-25%</span>
+                    <img src="images/product-1.jpg" alt="">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>mellow mix</p>
+                    <div class="price">$59.99 <span>$69.99</span></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <span class="discount">-25%</span>
+                    <img src="images/product-2.jpg" alt="">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>rose lipstick</p>
+                    <div class="price">$30.99 <span>$49.99</span></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <span class="discount">-25%</span>
+                    <img src="images/product-3.jpg" alt="">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                     
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>Tinted Moisturizer</p>
+                    <div class="price">$69.99 <span>$79.99</span></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <span class="discount">-25%</span>
+                    <img src="images/product-4.jpg" alt="">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>sum cream</p>
+                    <div class="price">$59.99 <span>$79.99</span></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <span class="discount">-25%</span>
+                    <img src="images/product-5.jpg" alt="">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+            
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>foundation</p>
+                    <div class="price">$89.99 <span>$99.99</span></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <span class="discount">-25%</span>
+                    <img src="images/product-6.jpg" alt="">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>flow mix</p>
+                    <div class="price">$29.99 <span>$35.99</span></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <span class="discount">-25%</span>
+                    <img src="images/product-7.jpg" alt="">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                  
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>blush cream</p>
+                    <div class="price">$40.99 <span>$50.99</span></div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <span class="discount">-25%</span>
+                    <img src="images/product-8.jpg" alt="">
+                    <!-- <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div> -->
+                </div>
+                <div class="content">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                       
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>dentimmune cream</p>
+                    <div class="price">$59.99 <span>$79.99</span></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </div>
+
+</section>
+
+<!-- shop section ends -->
+
+
+
+<!-- team section starts  -->
+
+ <section class="team" id="team">
+
+    <div class="heading">
+        <h1>our team</h1>
+        <p>"Your makeup should never hide you; it should make you shine brighter."</p>
+    </div>
+
+    <div class="box-container">
+
+        <div class="box">
+            <div class="image">
+                <img src="images/team-1.png" alt="">
+                <div class="share">
+                    <a href="https://www.facebook.com/"  target="_blank" class="fab fa-facebook-f"></a>
+                    <a href="https://x.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4iLCJteCI6IjIifQ%3D%3D%22%7D" target="_blank" class="fab fa-twitter"></a>
+                    <a href="https://www.instagram.com/accounts/login/" target="_blank" class="fab fa-instagram"></a>
+                    <a href="https://www.youtube.com/" target="_blank"  class="fa-brands fa-youtube"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>sana shaikh</h3>
+                <p>make-up artist-Smokey</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="images/team-2.png" alt="">
+                <div class="share">
+                    <a href="https://www.facebook.com/"  target="_blank" class="fab fa-facebook-f"></a>
+                    <a href="https://x.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4iLCJteCI6IjIifQ%3D%3D%22%7D" target="_blank" class="fab fa-twitter"></a>
+                    <a href="https://www.instagram.com/accounts/login/" target="_blank" class="fab fa-instagram"></a>
+                    <a href="https://www.youtube.com/" target="_blank"  class="fa-brands fa-youtube"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>abigali</h3>
+                <p>make-up artist-Hairstyles</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="images/team-3.png" alt="">
+                <div class="share">
+                    <a href="https://www.facebook.com/"  target="_blank" class="fab fa-facebook-f"></a>
+                    <a href="https://x.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4iLCJteCI6IjIifQ%3D%3D%22%7D" target="_blank" class="fab fa-twitter"></a>
+                    <a href="https://www.instagram.com/accounts/login/" target="_blank" class="fab fa-instagram"></a>
+                    <a href="https://www.youtube.com/" target="_blank"  class="fa-brands fa-youtube"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>raeylnn</h3>
+                <p>make-up artist-PowderBase</p>
+            </div>
+        </div>
+
+    </div>
+
+</section> 
+
+<!-- team section ends -->
+
+
+ 
+
+<!-- reviews section starts  -->
+
+<section class="reviews" id="reviews">
+
+    <div class="swiper reviews-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide">
+                <div class="user">
+                    <img src="images/pic-1.png" alt="">
+                    <div class="info">
+                        <h3>john deo</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text">"This foundation gives a flawless finish and lasts all day without creasing!"
+                    "Perfect for my dry skin—it hydrates and blends seamlessly."</p>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="user">
+                    <img src="images/pic-2.png" alt="">
+                    <div class="info">
+                        <h3>Ayla</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text">"The pigment is amazing, and it stays on even after eating!"
+                    "Super creamy and hydrating. My lips feel soft all day."</p>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="user">
+                    <img src="images/pic-3.png" alt="">
+                    <div class="info">
+                        <h3>josaf petter</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+    
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text">"Incredible color payoff and blends like a dream!"
+                    "The glitter shadows add the perfect pop for a night out."</p>
+            </div>
+
+            
+      
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- reviews section ends  -->
+
+
+
+
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a class="link" href="#home"> <i class="fas fa-angle-right"></i> home</a>
+            <a class="link" href="#about"> <i class="fas fa-angle-right"></i> about</a>
+            <a class="link" href="#shop"> <i class="fas fa-angle-right"></i> features</a>
+            <a class="link" href="#team"> <i class="fas fa-angle-right"></i> team</a>
+            <a class="link" href="#reviews"> <i class="fas fa-angle-right"></i> reviews</a>
+          
+        </div>
+
+        
+        <div class="box">
+            <h3>contact info</h3>
+            <p> <i class="fas fa-phone"></i> +123-xxx-7890 </p>
+            <p> <i class="fas fa-phone"></i> +111-xxx-3333 </p>
+            <p> <i class="fas fa-envelope"></i> blush@gmail.com </p>
+            <p> <i class="fas fa-map"></i> mumbai, india - 400104 </p>
+          
+        </div>
+
+        
+
+        <div class="box">
+            <h3>newsletter</h3>
+            <p>subscribe for latest updates</p>
+            <form action="">
+                <input type="email" name="" placeholder="enter your email" id="" class="email">
+                <input  onclick="alert('successfully submited')"   type="submit" value="subscribe" class="btn" >
+            </form>
+        </div>
+
+    </div>
+
+    <div class="credit"> created by <span>  <a href="#"  onclick="showPage('home')" class="logo"><img src="images/logo.png" alt="">Blush</a></span> </div>
+
+</section>
+
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <!--  -->
+      </section>
+   
+     
+      
+
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <!--  -->
+ 
+
+      <!-- Login Page -->
+      <section id="login-page" class="page1">
+        <h1>Login</h1>
+        <!-- <form  >
+          <label for="login-username">Username:</label>
+          <input type="text"  name="username" required />
+          <br />
+          <label for="login-password">Password:</label>
+          <input type="password"  name="password" required />
+          <br />
+          <button type="submit">Login</button>
+        </form> -->
+        <!-- login -->
+        <div class="login">
+          <form class="form" id="login-form">
+            <span class="input-span">
+              <label for="login-username" class="label">Email</label>
+              <input placeholder="Enter your Email" type="email" name="email" id="login-username"
+            /></span>
+            <span class="input-span" id="password">
+              <label for="login-password" class="label">Password</label>
+              <input placeholder="Enter your password" type="password" name="password" id="login-password"
+            /> <span class="eye" onclick="myFunction()">
+              <i  id="hide1" class="fa fa-eye"></i>
+              <i id="hide2" class="fa fa-eye-slash"></i>
+            </span></span>
+            <span class="span"> <a href="#" id="forgot-link">forgot password?</a></span>
+            <input class="submit" type="submit" value="Log in" />
+            <span class="span"
+              >Don't have an account? <a href="#register-form" id="register-link">Sign up</a></span
+            >
+          </form>
+        </div>
+      </section>
+      <!-- forgotpassword -->
+      <section id="forgot-page" class="page1" style="display: none">
+        <h1>Forgot Password </h1>
+        <div class="login">
+          <form class="form" id="forgot-form">
+            <span class="input-span">
+              <label for="forgot-username" class="label">Email</label>
+              <input placeholder="Enter your Email" type="email" name="email" id="forgot-username"
+            /></span> 
+            <span class="input-span" id="forgot-passwordContainer">
+              <label for="forgot-password" class="label">Password</label>
+              <input  placeholder="Enter your password" type="password" name="password" id="forgot-password"
+            /><span  onclick="myFunction2()">
+              <i  id="hide3" class="fa fa-eye"></i>
+              <i id="hide4" class="fa fa-eye-slash"></i>
+              </span>
+          </span>
+           
+           <input class="verifi" id="forgotVerifie" type="button" value="verify"/>
+          <input class="submit" id="forgotsubmit" type="submit" value="submit" />
+          <span class="span">Remenber Password goto <a href="#" id="login2-link">Login</a></span>
+            
+          </form>
+        </div>
+      </section>
+
+      <!-- Register Page -->
+      <section id="register-page" class="page1">
+        <h1>Register </h1>
+        <!-- <form id="register-form">
+          <label for="register-username">Username:</label>
+          <input type="text" id="register-username" name="username" required />
+          <br />
+          <label for="register-password">Password:</label>
+          <input
+            type="password"
+            id="register-password"
+            name="password"
+            required
+          />
+          <br />
+          <button type="submit">Register</button>
+        </form> -->
+        <div class="login">
+          <form class="form" id="register-form">
+            <span class="input-span">
+              <label for="register-name" class="label"
+                >Name</label>
+
+              <input placeholder="Enter your Name" type="text" name="name" id="register-name" required/>
+              <span class="error" id="nameError"></span>
+             </span>
+            
+            <span class="input-span">
+              <label for="register-useremail" class="label" 
+                >Email</label>
+              <input placeholder="Enter your Email" type="email" name="email" id="register-useremail" required/>
+              <span class="error" id="emailError"></span>
+          </span>
+            <span class="input-span">
+              <label for="register-password" class="label" >Password </label>
+              <input  placeholder="Enter your password" type="password" name="password" id="register-password"  required/>
+              <span class="error" id="password"></span>
+              <span class="eye" onclick="myFunction3()">
+                <i  id="hide5" class="fa fa-eye"></i>
+                <i id="hide6" class="fa fa-eye-slash"></i>
+                </span>
+            </span>
+          
+            <span class="input-span2">
+              <input type="checkbox" id="register-checkbox" name="checkbox" required />
+              Accept Terms & Conditions
+              <label for="register-checkbox" class="label"></label> 
+            </span>
+              
+            <input class="submit" type="submit" value="sign up" />
+            <span class="span"
+              >Already have an account <a href="#" id="login3-link">Login?</a></span>
+            
+          </form>
+        </div>
+      </section>
+
+      <!-- User  Update -->
+      <section id="update-user-page" class="page1" style="display: none">
+        <h1>Update </h1>
+        <!-- <form id="update-form">
+          <label for="update-username">Username:</label>
+          <input type="text" id="update-username" name="username" required />
+          <br />
+
+          
+          <label for="update-password">Password:</label>
+          <input
+            type="password"
+            id="update-password"
+            name="password"
+            required
+          />
+          <br />
+          <button type="submit">update</button>
+        </form> -->
+        <!--  -->
+        <div class="login">
+          <form class="form" id="update-form">
+            <span class="input-span">
+              <label for="update-name" class="label">Name</label>
+              <input placeholder="Enter your Name" type="text" name="name" id="update-name"
+            /></span>
+            <span class="input-span">
+              <label for="update-username" class="label">Email</label>
+              <input type="email" name="email" id="update-username"
+            /></span>
+            <span class="input-span">
+              <label for="update-password" class="label">Password</label>
+              <input placeholder="Enter your password" type="password" name="password" id="update-password"
+            /><span  onclick="myFunction4()">
+              <i  id="hide7" class="fa fa-eye"></i>
+              <i id="hide8" class="fa fa-eye-slash"></i>
+              </span>
+          </span> 
+         
+            <input class="submit" type="submit" value="Update" />
+            
+          </form>
+        </div>
+      </section>
+    
+
+      <!-- Products Page (for logged-in users) -->
+      <section id="sample1-page" class="page" style="display: none">
+        <!-- <h1>Sample 1 page</h1>
+        <p>Details of sample 1</p> -->
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <!-- gallery section starts  -->
+
+ <section class="shop" id="shop">
+     <!-- Search and Filter Section -->
+     <div class="filters">
+        <input type="text" id="search" placeholder="Search products..." onkeyup="searchProducts()">
+        <select id="categoryFilter" onchange="filterProducts()">
+            <option value="">Select Category</option>
+            <option value="lipstick">Lipstick</option>
+            <option value="eyeshadow">Eyeshadow</option>
+            <option value="foundation">Foundation</option>
+            <option value="blush">Blush</option>
+        </select>
+        <select id="brandFilter" onchange="filterProducts()">
+            <option value="">Select Brand</option>
+            <option value="brand1">Brand 1</option>
+            <option value="brand2">Brand 2</option>
+            <option value="brand3">Brand 3</option>
+        </select>
+    </div>
+
+    <!-- Product Catalog Section -->
+    <div class="product-catalog" id="productCatalog">
+        <!-- Products will be dynamically inserted here -->
+    </div>
+
+</section> 
+
+<!-- gallery section ends -->
+ <!-- AR-Try on-Funtion starts -->
+  
+  <!-- AR-Try on-Funtion ends -->
+<!-- arrivals section starts  -->
+
+ <section class="arrivals" id="arrivals">
+
+    <div class="heading">
+        <h1>new arrivals</h1>
+        <p>"I believe all women are pretty without makeup, but with the right makeup, they can be pretty powerful."</p>
+    </div>
+
+    <div class="swiper arrivals-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="images/arrival-1.jpg" alt="">
+                </div>
+                <div class="content">
+                    <p>Velvet Matte Lipstick</p>
+                    <div class="price">$39.99 <span>$45.99</span></div>
+                    
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="images/arrival-2.jpg" alt="">
+                </div>
+                <div class="content">
+                    <p>Shimmering Eyeshadow</p>
+                    <div class="price">$49.99 <span>$79.99</span></div>
+                  
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="images/arrival-3.jpg" alt="">
+                </div>
+                <div class="content">
+                    <p>Matte Finish Foundation</p>
+                    <div class="price">$89.99 <span>$99.99</span></div>
+                    
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="images/arrival-4.jpg" alt="">
+                </div>
+                <div class="content">
+                    <p>Matte Lipstick</p>
+                    <div class="price">$34.99 <span>$56.99</span></div>
+                
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="images/arrival-5.jpg" alt="">
+                </div>
+                <div class="content">
+                    <p>Long-Lasting Setting Spray</p>
+                    <div class="price">$39.99 <span>$49.99</span></div>
+                    
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="images/arrival-6.jpg" alt="">
+                </div>
+                <div class="content">
+                    <p>Rosy Glow Blush</p>
+                    <div class="price">$29.99 <span>$59.99</span></div>
+                    
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="images/arrival-7.jpg" alt="">
+                </div>
+                <div class="content">
+                    <p>Hydrating Tinted Moisturizer</p>
+                    <div class="price">$89.99 <span>$99.99</span></div>
+                  
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="images/arrival-8.jpg" alt="">
+                </div>
+                <div class="content">
+                    <p>Flushed Blush</p>
+                    <div class="price">$69.99 <span>$79.99</span></div>
+                
+                </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </div>
+    
+</section> 
+<!-- arrivals section ends -->
+ <!-- camara starts -->
+ <section class="gallery" id="gallery">
+
+  <div class="heading">
+      <h1>AR Makeup Try-On</h1>
+      <p>"Beneath the makeup and behind the smile, I am just a girl who wishes for the world."</p>
+  </div>
+  <div class="container-m">
+    
+
+    <!-- AR View -->
+    <div class="ar-view">
+        <video id="camera-stream" autoplay></video>
+        <div id="makeup-overlay">
+            <div class="lipstick-overlay"></div>
+            <div class="eyebrow-overlay"></div>
+            <div class="foundation-overlay"></div>
+            <div class="hairstyle-overlay"></div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <h2>Customize Your Look</h2>
+
+        <label for="lipstick-color">Lipstick Color:</label>
+        <input type="color" id="lipstick-color" value="#ff0000">
+
+        <label for="eyebrow-color">Eyebrow Color:</label>
+        <input type="color" id="eyebrow-color" value="#000000">
+
+        <label for="foundation-color">Foundation Shade:</label>
+        <input type="color" id="foundation-color" value="#f5d6ba">
+
+        <label for="hairstyle-select">Hairstyle:</label>
+        <select id="hairstyle-select">
+            <option value="none">None</option>
+            <option value="long">Long Hair</option>
+            <option value="short">Short Hair</option>
+            <option value="curly">Curly Hair</option>
+            <option value="braids">Braids</option>
+        </select>
+
+        <label for="makeup-style-select">Makeup Style:</label>
+        <select id="makeup-style-select">
+            <option value="natural">Natural</option>
+            <option value="glamorous">Glamorous</option>
+            <option value="bold">Bold</option>
+        </select>
+
+        <button id="save-settings">Save</button>
+        <button id="download-look">Download</button>
+    </div>
+
+    <!-- Saved Looks -->
+    <div class="saved-looks">
+        <h2>Saved Looks</h2>
+        <div id="saved-container"></div>
+    </div>
+</div>
+ </section>
+  <!-- camara ends -->
+
+ <!-- team section starts  -->
+
+ <section class="team" id="team">
+
+  <div class="heading">
+      <h1>our team</h1>
+      <p>"Your makeup should never hide you; it should make you shine brighter."</p>
+  </div>
+
+  <div class="box-container">
+
+      <div class="box">
+          <div class="image">
+              <img src="images/team-1.png" alt="">
+              <div class="share">
+                  <a href="https://www.facebook.com/"  target="_blank" class="fab fa-facebook-f"></a>
+                  <a href="https://x.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4iLCJteCI6IjIifQ%3D%3D%22%7D" target="_blank" class="fab fa-twitter"></a>
+                  <a href="https://www.instagram.com/accounts/login/" target="_blank" class="fab fa-instagram"></a>
+                  <a href="https://www.youtube.com/" target="_blank"  class="fa-brands fa-youtube"></a>
+              </div>
+          </div>
+          <div class="content">
+              <h3>sana shaikh</h3>
+              <p>make-up artist-Smokey</p>
+          </div>
+      </div>
+
+      <div class="box">
+          <div class="image">
+              <img src="images/team-2.png" alt="">
+              <div class="share">
+                  <a href="https://www.facebook.com/"  target="_blank" class="fab fa-facebook-f"></a>
+                  <a href="https://x.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4iLCJteCI6IjIifQ%3D%3D%22%7D" target="_blank" class="fab fa-twitter"></a>
+                  <a href="https://www.instagram.com/accounts/login/" target="_blank" class="fab fa-instagram"></a>
+                  <a href="https://www.youtube.com/" target="_blank"  class="fa-brands fa-youtube"></a>
+              </div>
+          </div>
+          <div class="content">
+              <h3>abigali</h3>
+              <p>make-up artist-Hairstyles</p>
+          </div>
+      </div>
+
+      <div class="box">
+          <div class="image">
+              <img src="images/team-3.png" alt="">
+              <div class="share">
+                  <a href="https://www.facebook.com/"  target="_blank" class="fab fa-facebook-f"></a>
+                  <a href="https://x.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4iLCJteCI6IjIifQ%3D%3D%22%7D" target="_blank" class="fab fa-twitter"></a>
+                  <a href="https://www.instagram.com/accounts/login/" target="_blank" class="fab fa-instagram"></a>
+                  <a href="https://www.youtube.com/" target="_blank"  class="fa-brands fa-youtube"></a>
+              </div>
+          </div>
+          <div class="content">
+              <h3>raeylnn</h3>
+              <p>make-up artist-PowderBase</p>
+          </div>
+      </div>
+
+  </div>
+
+</section> 
+
+<!-- team section ends -->
+  <!-- choose start -->
+  <section class="shop" id="shop">
+
+    <div class="heading">
+        <h1>User Profile Customization</h1>
+        
+        <p>"The most beautiful makeup of a woman is passion. But cosmetics are easier to buy."</p>
+    </div>
+    <div class="container-c">
+      <!-- User Profile Customization Section -->
+      <div class="profile-customization">
+          <h2>Customize Your Profile</h2>
+          <div class="profile-picture">
+              <img id="profile-img" src="https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733998787/content-img-2_mnnfen.png" alt="Profile Picture">
+              <input type="file" id="file-input" accept="image/*" />
+          </div>
+          <div class="user-info">
+              <label for="username">Username:</label>
+              <input type="text" id="username" placeholder="Enter new username" value="user123">
+  
+              <label for="bio">Bio:</label>
+              <textarea id="bio" placeholder="Write something about yourself...">Love makeup and beauty products!</textarea>
+          </div>
+      </div>
+  
+      <!-- AR Filters Customization Section -->
+      <div class="ar-customization">
+          <h2>Customize AR Interface</h2>
+          <label for="filter-select">Select AR Filter:</label>
+          <select id="filter-select">
+              <option value="none">No Filter</option>
+              <option value="sepia">Sepia</option>
+              <option value="grayscale">Grayscale</option>
+              <option value="vintage">Vintage</option>
+          </select>
+  
+          <label for="effect-select">Select AR Effect:</label>
+          <select id="effect-select">
+              <option value="none">No Effect</option>
+              <option value="blur">Blur</option>
+              <option value="glow">Glow</option>
+              <option value="sketch">Sketch</option>
+          </select>
+      </div>
+  
+      <!-- Applied Customization Display -->
+      <div class="customization-display">
+          <h3>Applied Customizations:</h3>
+          <p id="applied-filter">Filter: None</p>
+          <p id="applied-effect">Effect: None</p>
+          <button id="reset-btn">Reset Customizations</button>
+      </div>
+  
+      <!-- Save Settings -->
+      <div class="save-settings">
+          <button id="save-settings-btn">Save Settings</button>
+      </div>
+  </div>
+  
+  <!-- Popup Modal for Displaying Settings -->
+  <div id="popup" class="popup-overlay">
+      <div class="popup-content">
+          <h2>Your Saved Settings</h2>
+          <img id="saved-profile-img" src="https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733998787/content-img-2_mnnfen.png" alt="Profile Picture">
+          <p><strong>Username:</strong> <span id="saved-username">user123</span></p>
+          <p><strong>Bio:</strong> <span id="saved-bio">Love makeup and beauty products!</span></p>
+          <p><strong>Applied Filter:</strong> <span id="saved-filter">None</span></p>
+          <p><strong>Applied Effect:</strong> <span id="saved-effect">None</span></p>
+          <button id="close-popup-btn">Close</button>
+      </div>
+  </div>
+   </section>
+    <!--  -->
+    <!-- choose ends -->
+ <!-- service section ends -->
+
+<!-- blogs section starts  -->
+
+<section class="blogs" id="blogs">
+
+  <div class="heading">
+      <h1>our daily blogs</h1>
+      <p>"Beneath the makeup and behind the smile, I am just a girl who wishes for the world."</p>
+  </div>
+
+  <div class="swiper blogs-slider">
+
+      <div class="swiper-wrapper">
+
+          <div class="swiper-slide slide">
+              <div class="image">
+                  <img src="images/img-1.jpg" alt="">
+                  <div class="icons">
+                      <a href="#"> <i class="fas fa-user"></i> by admin mary </a>
+                      <a href="#"> <i class="fas fa-clock"></i> 1st march, 2024 </a>
+                  </div>
+              </div>
+              <div class="content">
+                  <h3>On the Power of Makeup</h3>
+                  <p>"Makeup is not a mask. It’s art, passion, and self-expression."</p>
+                
+              </div>
+          </div>
+
+          <div class="swiper-slide slide">
+              <div class="image">
+                  <img src="images/img-2.jpg" alt="">
+                  <div class="icons">
+                      <a href="#"> <i class="fas fa-user"></i> by admin ovely </a>
+                      <a href="#"> <i class="fas fa-clock"></i> 21st may, 2024 </a>
+                  </div>
+              </div>
+              <div class="content">
+                  <h3>On Self-Confidence and Beauty</h3>
+                  <p>
+                    "Confidence is the best makeup you can wear, but a little mascara never hurts."</p>
+                  
+              </div>
+          </div>
+
+          <div class="swiper-slide slide">
+              <div class="image">
+                  <img src="images/img-3.jpg" alt="">
+                  <div class="icons">
+                      <a href="#"> <i class="fas fa-user"></i> by admin nansi </a>
+                      <a href="#"> <i class="fas fa-clock"></i> 4th april, 2024</a>
+                  </div>
+              </div>
+              <div class="content">
+                  <h3>On Creativity and Expression</h3>
+                  <p>"Makeup is art; beauty is spirit."</p>
+                  
+              </div>
+          </div>
+
+          <div class="swiper-slide slide">
+              <div class="image">
+                  <img src="images/img-4.jpg" alt="">
+                  <div class="icons">
+                      <a href="#"> <i class="fas fa-user"></i> by admin recha </a>
+                      <a href="#"> <i class="fas fa-clock"></i> 21st may, 2024 </a>
+                  </div>
+              </div>
+              <div class="content">
+                  <h3>Inspirational Makeup Philosophy</h3>
+                  <p>"The power of makeup lies in its ability to enhance, not hide."</p>
+                
+              </div>
+          </div>
+
+          <div class="swiper-slide slide">
+              <div class="image">
+                  <img src="images/img-5.jpg" alt="">
+                  <div class="icons">
+                      <a href="#"> <i class="fas fa-user"></i> by admin stalla </a>
+                      <a href="#"> <i class="fas fa-clock"></i> 23rd aug, 2024 </a>
+                  </div>
+              </div>
+              <div class="content">
+                  <h3>Playful and Fun</h3>
+                  <p>"Life isn’t perfect, but your eyeliner can be."</p>
+                  
+              </div>
+          </div>
+
+          <div class="swiper-slide slide">
+              <div class="image">
+                  <img src="images/img-6.jpg" alt="">
+                  <div class="icons">
+                      <a href="#"> <i class="fas fa-user"></i> by admin rosh </a>
+                      <a href="#"> <i class="fas fa-clock"></i> 1st june, 2024 </a>
+                  </div>
+              </div>
+              <div class="content">
+                  <h3> Power of Makeup</h3>
+                  <p>"Makeup is the finishing touch, the final accessory."</p>
+                  
+              </div>
+          </div>
+
+      </div>
+
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+
+  </div>
+
+</section>
+
+<!-- blogs section ends -->
+ 
+ <!-- reviews section starts  -->
+
+<section class="reviews" id="reviews">
+
+  <div class="swiper reviews-slider">
+
+      <div class="swiper-wrapper">
+
+          <div class="swiper-slide slide">
+              <div class="user">
+                  <img src="images/pic-1.png" alt="">
+                  <div class="info">
+                      <h3>john deo</h3>
+                      <div class="stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                      </div>
+                  </div>
+              </div>
+              <p class="text">"This foundation gives a flawless finish and lasts all day without creasing!"
+                  "Perfect for my dry skin—it hydrates and blends seamlessly."</p>
+          </div>
+
+          <div class="swiper-slide slide">
+              <div class="user">
+                  <img src="images/pic-2.png" alt="">
+                  <div class="info">
+                      <h3>Ayla</h3>
+                      <div class="stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                      </div>
+                  </div>
+              </div>
+              <p class="text">"The pigment is amazing, and it stays on even after eating!"
+                  "Super creamy and hydrating. My lips feel soft all day."</p>
+          </div>
+
+          <div class="swiper-slide slide">
+              <div class="user">
+                  <img src="images/pic-3.png" alt="">
+                  <div class="info">
+                      <h3>josaf petter</h3>
+                      <div class="stars">
+                          <i class="fas fa-star"></i>
+  
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                      </div>
+                  </div>
+              </div>
+              <p class="text">"Incredible color payoff and blends like a dream!"
+                  "The glitter shadows add the perfect pop for a night out."</p>
+          </div>
+
+          
+    
+
+      </div>
+
+  </div>
+
+</section>
+
+<!-- reviews section ends  -->
+ 
+ <!-- footer section starts  -->
+
+<section class="footer">
+
+  <div class="box-container">
+
+      
+
+      
+      <div class="box">
+          <h3>contact info</h3>
+          <p> <i class="fas fa-phone"></i> +123-xxx-7890 </p>
+          <p> <i class="fas fa-phone"></i> +111-xxx-3333 </p>
+          <p> <i class="fas fa-envelope"></i> blush@gmail.com </p>
+          <p> <i class="fas fa-map"></i> mumbai, india - 400104 </p>
+        
+      </div>
+
+      
+
+      <div class="box">
+          <h3>newsletter</h3>
+          <p>subscribe for latest updates</p>
+          <form action="">
+              <input type="email" name="" placeholder="enter your email" id="" class="email">
+              <input onclick="alert('successfully submited')"  type="submit" value="subscribe" class="btn">
+          </form>
+      </div>
+
+  </div>
+
+  <div class="credit"> created by <span>  <a href="#"  onclick="showPage('home')" class="logo"><img src="images/logo.png" alt="">Blush</a></span> </div>
+
+</section>
+
+<!-- footer section ends -->
+
+
+
+        <!--  -->
+        <!--  -->
+      <!--  -->
+  
+      </section>
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <!-- Farm Information Page (for logged-in users) -->
+     <section id="sample2-page" class="page" style="display: none">
+      <!--  -->
+<!-- gallery section starts  -->
+
+<section class="gallery" id="gallery">
+
+  <div class="heading">
+      <h1>our gallery</h1>
+      <p>"The power of makeup lies in its ability to enhance, not hide.</p>
+  </div>
+
+  <div class="lightbox">
+      <a href="images/img-1.jpg"><img src="images/img-1.jpg" alt=""></a>
+      <a href="images/img-2.jpg"><img src="images/img-2.jpg" alt=""></a>
+      <a href="images/img-3.jpg"><img src="images/img-3.jpg" alt=""></a>
+      <a href="images/img-4.jpg"><img src="images/img-4.jpg" alt=""></a>
+      <a href="images/img-5.jpg"><img src="images/img-5.jpg" alt=""></a>
+      <a href="images/img-6.jpg"><img src="images/img-6.jpg" alt=""></a>
+  </div>
+
+</section>
+
+<!-- gallery section ends -->
+ <!-- community start -->
+ <section class="arrivals" id="arrivals">
+  <div class="heading">
+    <h1>Makeup Gallery</h1>
+    <p>"Makeup is art; beauty is spirit."</p>
+</div>
+<div class="gallery-container">
+  <!-- Add New Post Section -->
+  <div class="new-post">
+      <input type="file" id="file-upload" accept="image/*">
+      <button onclick="createPost()"><i class="fas fa-plus-circle"></i> Create Post</button>
+  </div>
+
+  <!-- Image Gallery Section -->
+  <div class="post-gallery" id="post-gallery">
+      <div class="single-post" id="post-1">
+          <img src="https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733984809/c1_ne3sya.jpg" alt="Makeup Look">
+          <h3>Stunning Evening Look</h3>
+          <p>Shared by @beautyguru</p>
+          <div class="post-actions">
+              <button class="like-button" onclick="toggleLikeDislike(this)"><i class="fas fa-thumbs-up"></i> </button>
+              <button class="dislike-button" onclick="toggleLikeDislike(this)"><i class="fas fa-thumbs-down"></i> </button>
+              <button class="share-button" onclick="shareContent(this)"><i class="fas fa-share-alt"></i> </button>
+              <button class="delete-button" onclick="removePost(this)"><i class="fas fa-trash"></i> </button>
+              <button class="follow-button" onclick="toggleFollow(this)">Follow</button>
+          </div>
+          <div class="comments-section">
+              <input type="text" placeholder="Add a comment..." class="comment-input">
+              <button onclick="addComment(this)">Post Comment</button>
+              <ul class="comment-list"></ul>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Popup for Like/Dislike -->
+<div class="popup-box" id="like-dislike-popup">
+  <h3 id="popup-message">Action performed successfully!</h3>
+  <button onclick="closePopup()">Close</button>
+</div>
+
+
+  
+ </section>
+  <!-- community ends -->
+
+   <!-- achivement start -->
+   <section class="team" id="team">
+
+    <div class="heading">
+        <h1>User Dashboard - Makeup App</h1>
+        <p>"Your makeup should never hide you; it should make you shine brighter."</p>
+    </div>
+    <div class="container-a">
+      <!-- User Profile Dashboard -->
+      <div class="user-profile">
+          <div class="profile-header">
+              <img src="https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733984809/c1_ne3sya.jpg" id="user-image" alt="Profile Picture" class="profile-img">
+              <h2 id="username">Welcome, <span id="username-display">@blush</span></h2>
+          </div>
+          <div class="user-stats">
+              <div class="stat-item">
+                  <span class="stat-title">Makeup Tries</span>
+                  <span class="stat-value" id="makeup-tries">0</span>
+              </div>
+              <div class="stat-item">
+                  <span class="stat-title">Favorite Products</span>
+                  <span class="stat-value" id="favorite-products">0</span>
+              </div>
+              <div class="stat-item">
+                  <span class="stat-title">Badges</span>
+                  <div class="badges" id="user-badges">
+                      <!-- Badges will be dynamically added here -->
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Review Section -->
+      <div class="review-section">
+          <h3>Your Reviews</h3>
+          <div id="reviews-container">
+              <!-- User reviews will be added here -->
+          </div>
+          <textarea id="review-text" placeholder="Write your review here..." rows="4" cols="50"></textarea>
+          <button id="submit-review-btn">Submit Review</button>
+      </div>
+
+      <!-- Insights Section -->
+      <div class="insights">
+          <h3>Explore More</h3>
+          <div class="insight-item">
+              <h4>Try New Products</h4>
+              <p>Expand your collection by trying more makeup products. Check out new arrivals!</p>
+              <button id="try-product-btn">Try a New Product</button>
+          </div>
+      </div>
+
+  </div>
+   </section>
+    <!-- achivement ends -->
+<!-- remainder starts -->
+<section class="shop" id="shop">
+
+  <div class="heading">
+      <h1>Makeup Event Reminders</h1>
+      <p>"Makeup is not about covering flaws but enhancing your uniqueness."</p>
+      
+  </div>
+  <div class="container-n">
+    <!-- Set Reminder Section -->
+    <div class="reminder-section">
+      <h2>Set Reminder for Makeup Event</h2>
+      <label for="event-name">Event Name:</label>
+      <input type="text" id="event-name" placeholder="Event Name">
+
+      <label for="reminder-date">Event Date:</label>
+      <input type="datetime-local" id="reminder-date">
+
+      <button id="set-reminder-btn">Set Reminder</button>
+  </div>
+
+  <!-- Display reminders -->
+  <div class="reminder-list">
+      <h3>Your Set Reminders</h3>
+      <ul id="reminder-list"></ul>
+  </div>
+</div>
+
+
+
+</section>
+ <!-- remainder ends -->
+  <!-- help and support starts -->
+  <section class="gallery" id="gallery">
+
+    <div class="heading">
+        <h1>Help & Support</h1>
+        <p>"The most beautiful makeup of a woman is passion. But cosmetics are easier to buy."</p>
+    </div>
+    <div class="container-h">
+      <!-- FAQs Section -->
+      <section class="faqs">
+          <h2>FAQs</h2>
+          <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                  <span>How do I change my profile picture?</span>
+                  <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                  <p>Go to your profile, click on your picture, and upload a new image.</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                  <span>Can I reset my password?</span>
+                  <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                  <p>Yes, click "Forgot Password" on the login screen to reset it.</p>
+              </div>
+          </div>
+          <div class="faq-item">
+              <div class="faq-question" onclick="toggleFaq(this)">
+                  <span>How can I report an issue?</span>
+                  <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                  <p>Use the feedback form below to report any issues or suggest improvements.</p>
+              </div>
+          </div>
+      </section>
+
+      <!-- Feedback Section -->
+      <section class="feedback">
+          <h2>Feedback & Suggestions</h2>
+          <form id="feedback-form">
+              <label for="feedback-type">Type of Feedback:</label>
+              <select id="feedback-type">
+                  <option value="suggestion">Suggestion</option>
+                  <option value="issue">Issue</option>
+              </select>
+
+              <label for="feedback-message">Your Feedback:</label>
+              <textarea id="feedback-message" placeholder="Enter your feedback here..." required></textarea>
+
+              <button type="submit">Submit Feedback</button>
+          </form>
+          <p id="feedback-status"></p>
+      </section>
+  </div>
+  </section>
+    <!--  -->
+   <!-- help and support ends -->
+   
+ <!-- reviews section starts  -->
+
+<section class="reviews" id="reviews">
+
+  <div class="swiper reviews-slider">
+
+      <div class="swiper-wrapper">
+
+          <div class="swiper-slide slide">
+              <div class="user">
+                  <img src="images/pic-1.png" alt="">
+                  <div class="info">
+                      <h3>john deo</h3>
+                      <div class="stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                      </div>
+                  </div>
+              </div>
+              <p class="text">"This foundation gives a flawless finish and lasts all day without creasing!"
+                  "Perfect for my dry skin—it hydrates and blends seamlessly."</p>
+          </div>
+
+          <div class="swiper-slide slide">
+              <div class="user">
+                  <img src="images/pic-2.png" alt="">
+                  <div class="info">
+                      <h3>Ayla</h3>
+                      <div class="stars">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                      </div>
+                  </div>
+              </div>
+              <p class="text">"The pigment is amazing, and it stays on even after eating!"
+                  "Super creamy and hydrating. My lips feel soft all day."</p>
+          </div>
+
+          <div class="swiper-slide slide">
+              <div class="user">
+                  <img src="images/pic-3.png" alt="">
+                  <div class="info">
+                      <h3>josaf petter</h3>
+                      <div class="stars">
+                          <i class="fas fa-star"></i>
+  
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                      </div>
+                  </div>
+              </div>
+              <p class="text">"Incredible color payoff and blends like a dream!"
+                  "The glitter shadows add the perfect pop for a night out."</p>
+          </div>
+
+          
+    
+
+      </div>
+
+  </div>
+
+</section>
+
+<!-- reviews section ends  -->
+
+<!-- review-starts -->
+   
+<section class="blogs" id="blogs">
+
+  <div class="heading">
+      <h1>Rate and Review Makeup Products</h1>
+      <p>"Beneath the makeup and behind the smile, I am just a girl who wishes for the world."</p>
+  </div>
+  <div class="container-r">
+
+    <!-- Review Form -->
+    <div class="review-form">
+        <h2>Submit a Review</h2>
+        <label for="rating">Rating (1-5):</label>
+        <input type="number" id="rating" min="1" max="5" required>
+
+        <label for="review">Review:</label>
+        <textarea id="review" required></textarea>
+
+        <label for="image">Upload Image (optional):</label>
+        <input type="file" id="image" accept="image/*">
+
+        <button onclick="submitReview()">Submit Review</button>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="reviews">
+        <h2>Reviews</h2>
+        <div id="reviews-list"></div>
+
+        <div id="aggregated-rating">
+            <h3>Average Rating:</h3>
+            <span id="average-rating">0</span> / 5
+        </div>
+    </div>
+</div>
+ </section>
+ 
+
+
+
+  <!-- review-ends -->
+
+
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+  <div class="box-container">
+
+     
+
+      
+      <div class="box">
+          <h3>contact info</h3>
+          <p> <i class="fas fa-phone"></i> +123-xxx-7890 </p>
+          <p> <i class="fas fa-phone"></i> +111-xxx-3333 </p>
+          <p> <i class="fas fa-envelope"></i> blush@gmail.com </p>
+          <p> <i class="fas fa-map"></i> mumbai, india - 400104 </p>
+        
+      </div>
+
+      
+
+      <div class="box">
+          <h3>newsletter</h3>
+          <p>subscribe for latest updates</p>
+          <form action="">
+              <input type="email" name="" placeholder="enter your email" id="" class="email">
+              <input onclick="alert('successfully submited')"  type="submit" value="subscribe" class="btn">
+          </form>
+      </div>
+
+  </div>
+
+  <div class="credit"> created by <span>  <a href="#"  onclick="showPage('home')" class="logo"><img src="images/logo.png" alt="">Blush</a></span> </div>
+
+</section>
+
+<!-- footer section ends -->
+       <!--  -->
+     </section>
+    </main>
+  
+  
+   
+    <!-- script -->
+
+    <!-- icons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- wallpaper -->
+     <!--  -->
+    <!--  -- -->
+      <!--  -->
+      <!--  -->
+        <!--  -->
+    <!--  -- -->
+      <!--  -->
+      <!--  -->
+        <!--  -->
+    <!--  -- -->
+      <!--  -->
+      <!--  -->
+        <!--  -->
+    <!--  -- -->
+      <!--  -->
+      <!--  -->
+        <!--  -->
+    <!--  -- -->
+      <!--  -->
+      <!--  -->
+<script>
+
+
+
+   function myFunction() {
+     var password = document.getElementById("login-password");
+     var eye = document.getElementById("hide1");
+     var eyeslash = document.getElementById("hide2");
+
+
+     if(password.type  === 'password'){
+        password.type = "text";
+        eye.style.display = "block";
+        eyeslash.style.display = "none";
+     }
+     else{
+         password.type = "password";
+         eye.style.display = "none";
+         eyeslash.style.display = "block";
+     }
+   }
+   //forgot
+   document.getElementById("hide3").style.display = "none"
+   function myFunction2() {
+     var password = document.getElementById("forgot-password");
+     var eye = document.getElementById("hide3");
+     var eyeslash = document.getElementById("hide4");
+
+
+     if(password.type  === 'password'){
+        password.type = "text";
+        eye.style.display = "block";
+        eyeslash.style.display = "none";
+     }
+     else{
+         password.type = "password";
+         eye.style.display = "none";
+         eyeslash.style.display = "block";
+     }
+   }
+  //  register
+  document.getElementById("hide5").style.display = "none"
+   function myFunction3() {
+     var password = document.getElementById("register-password");
+     var eye = document.getElementById("hide5");
+     var eyeslash = document.getElementById("hide6");
+
+
+     if(password.type  === 'password'){
+        password.type = "text";
+        eye.style.display = "block";
+        eyeslash.style.display = "none";
+     }
+     else{
+         password.type = "password";
+         eye.style.display = "none";
+         eyeslash.style.display = "block";
+     }
+   }
+// update-password
+document.getElementById("hide7").style.display = "none"
+   function myFunction4() {
+     var password = document.getElementById("update-password");
+     var eye = document.getElementById("hide7");
+     var eyeslash = document.getElementById("hide8");
+
+
+     if(password.type  === 'password'){
+        password.type = "text";
+        eye.style.display = "block";
+        eyeslash.style.display = "none";
+     }
+     else{
+         password.type = "password";
+         eye.style.display = "none";
+         eyeslash.style.display = "block";
+     }
+   }
+
+//    
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// DOM elements
+const generalHeader = document.getElementById("general-header");
+const userHeader = document.getElementById("user-header");
+const homePage = document.getElementById("home-page");
+const loginPage = document.getElementById("login-page");
+const registerPage = document.getElementById("register-page");
+const UpdateUserPage = document.getElementById("update-user-page");
+const sample1Page = document.getElementById("sample1-page");
+const sample2Page = document.getElementById("sample2-page");
+const forgotpage = document.getElementById("forgot-page");
+
+// Login and Register Forms
+const loginForm = document.getElementById("login-form");
+const registerForm = document.getElementById("register-form");
+const updateForm = document.getElementById("update-form");
+
+// 
+
+
+  
+
+// Show the general user header if no one is logged in
+function showHeader() {
+  const loggedInUser = localStorage.getItem("loggedInUser");
+  if (loggedInUser) {
+    userHeader.style.display = "block";
+    generalHeader.style.display = "none";
+  } else {
+    generalHeader.style.display = "block";
+    userHeader.style.display = "none";
+  }
+}
+
+// Function to show specific page
+function showPage(page) {
+  // Hide all pages first
+  homePage.style.display = "none";
+  loginPage.style.display = "none";
+  registerPage.style.display = "none";
+  sample1Page.style.display = "none";
+  sample2Page.style.display = "none";
+  UpdateUserPage.style.display = "none";
+  forgotpage.style.display = "none";
+
+  // Show the selected page
+  if (page === "home") {
+    homePage.style.display = "block";
+  } else if (page === "login") {
+    loginPage.style.display = "block";
+  } else if (page === "register") {
+    registerPage.style.display = "block";
+  } else if (page === "sample1") {
+    sample1Page.style.display = "block";
+  }
+  else if (page === "sample2") {
+    sample2Page.style.display = "block";
+  }
+   else if (page === "update-user") {
+    UpdateUserPage.style.display = "block";
+  }
+  else if (page === "forgot-user") {
+    forgotpage.style.display = "block";
+  }
+}
+
+// Event listeners for general user navigation
+document
+  .getElementById("home-link")
+  .addEventListener("click", () => showPage("home"));
+document
+  .getElementById("login-link")
+  .addEventListener("click", () => showPage("login"));
+document
+  .getElementById("login2-link")
+  .addEventListener("click", () => showPage("login"));
+document
+  .getElementById("login3-link")
+  .addEventListener("click", () => showPage("login"));
+document
+  .getElementById("register-link")
+  .addEventListener("click", () => showPage("register"));
+document
+  .getElementById("forgot-link")
+  .addEventListener("click", () => {showPage("forgot-user")
+    updatefotgotpage()
+  });
+
+  document
+  .getElementById("update-link")
+  .addEventListener("click", () => {showPage("update-user")
+    const currentuser = JSON.parse(localStorage.getItem('loggedInUser'))
+    document.getElementById("update-name").value = currentuser.name
+    document.getElementById("update-username").value = currentuser.username
+    document.getElementById("update-password").value = currentuser.password
+
+    profileContainer.classList.remove("show");
+  overlay.classList.remove("active");
+    
+  });
+// Event listeners for logged-in user navigation
+
+document
+  .getElementById("home-user-link")
+  .addEventListener("click", () => showPage("home"));
+document
+  .getElementById("sample-1-link")
+  .addEventListener("click", () => showPage("sample1"));
+  document
+  .getElementById("sample-2-link")
+  .addEventListener("click", () => showPage("sample2"));
+
+// JavaScript for the nav toggle functionality
+const navToggleIcon = document.getElementById("navToggleIcon");
+const userNavLinks = document.querySelector(".user-nav-links");
+const userNavItems = document.querySelectorAll(".user-nav-links li a");
+
+navToggleIcon.addEventListener("click", () => {
+  // Toggle the 'active' class to show/hide nav links
+  userNavLinks.classList.toggle("active");
+});
+
+userNavItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    // userNavItems.classList.remove("open"); // Close the menu
+    userNavLinks.classList.toggle("active");
+    // alert("c");
+  });
+});
+
+//
+
+//
+
+document.addEventListener("DOMContentLoaded", () => {
+  const notificationIcon = document.getElementById("notificationIcon");
+  const profileIcon = document.getElementById("profileIcon");
+  const notificationContainer = document.getElementById(
+    "notificationContainer"
+  );
+  const profileContainer = document.getElementById("profileContainer");
+  const closeNotificationBtn = document.getElementById("closeNotificationBtn");
+  const closeProfileBtn = document.getElementById("closeProfileBtn");
+  const overlay = document.getElementById("overlay");
+
+  function closeAllContainers() {
+    notificationContainer.classList.remove("show");
+    profileContainer.classList.remove("show");
+    overlay.classList.remove("active");
+  }
+
+ 
+
+  // Show profile panel
+  profileIcon.addEventListener("click", () => {
+    closeAllContainers(); // Close notification if open
+    profileContainer.classList.add("show");
+    overlay.classList.add("active");
+  });
+
+  // Close notification panel
+  closeNotificationBtn.addEventListener("click", () => {
+    closeAllContainers();
+  });
+
+  // Close profile panel
+  closeProfileBtn.addEventListener("click", () => {
+    closeAllContainers();
+  });
+
+  // Close panels by clicking on overlay
+  overlay.addEventListener("click", () => {
+    closeAllContainers();
+  });
+});
+
+const toggleButton = document.getElementById("modeToggle");
+const body = document.body;
+toggleButton.addEventListener("click", () => {
+  if (body.classList.contains("dark-mode")) {
+    // showToast("Toggle mode");
+    body.classList.remove("dark-mode");
+    body.classList.add("light-mode");
+  } else {
+    // showToast("Toggle mode");
+    body.classList.remove("light-mode");
+    body.classList.add("dark-mode");
+  }
+});
+
+// Register functionality
+registerForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name =document.getElementById("register-name").value;
+  const username = document.getElementById("register-useremail").value;
+  const password = document.getElementById("register-password").value;
+  const uniqueId = crypto.randomUUID();
+
+
+ 
+
+
+if (
+    !/^[A-Za-z\s]+$/.test(name) 
+  ) {
+    alert("name should contain only letters .");
+    return;
+  }
+
+  
+
+  if (!username.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  if (
+    !/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}/.test(
+      password
+    )
+  ) {
+    alert(
+      "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character."
+    );
+    return;
+  }
+
+  
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  // Check if the user already exists
+  if (users.some((user) => user.username === username)) {
+    alert("User already exists!");
+    return;
+  }
+
+  users.push({ username, password,name, uniqueId });
+  localStorage.setItem("users", JSON.stringify(users));
+  alert("Registration successful!");
+  showPage("login");
+});
+
+// Login functionality
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const username = document.getElementById("login-username").value;
+  const password = document.getElementById("login-password").value;
+
+
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  // Check if the user exists and the password matches
+  const user = users.find(
+    (user) => user.username === username && user.password === password
+  );
+
+  if (user) {
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
+    alert("Login successful!");
+    showHeader();
+    userupdate();
+    showPage("home");
+  } else {
+    alert("Invalid username or password!");
+  }
+});
+
+
+//update functionality
+updateForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // Get the form input values
+  const username = document.getElementById("update-username").value;
+  const password = document.getElementById("update-password").value;
+  const name = document.getElementById("update-name").value;
+  
+
+
+  // Retrieve users and loggedInUser from localStorage
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  if (!loggedInUser) {
+    alert("No logged-in user found!");
+    return;
+  }
+
+  // Find the user by uniqueId in the users array
+  const userIndex = users.findIndex(
+    (user) => user.uniqueId === loggedInUser.uniqueId
+  );
+
+  if (userIndex !== -1) {
+    // User found, update their username and password
+    users[userIndex].username = username;
+    users[userIndex].password = password;
+    users[userIndex].name = name;
+
+    // Update users array in localStorage
+    localStorage.setItem("users", JSON.stringify(users));
+
+    // Update the loggedInUser in localStorage with new username and password
+    localStorage.setItem(
+      "loggedInUser",
+      JSON.stringify({ username, password,name, uniqueId: loggedInUser.uniqueId })
+    );
+
+    console.log("Updated loggedInUser:", localStorage.getItem("loggedInUser"));
+    alert("User Details Updated Successfully!");
+
+    // Optionally redirect or display the home page
+    showPage("home");
+    userupdate()
+  } else {
+    // If the user is not found in the array
+    alert("User not found!");
+  }
+});
+
+// Logout functionality
+document.getElementById("logout-link").addEventListener("click", () => {
+  localStorage.removeItem("loggedInUser");
+  const overlay = document.getElementById('overlay')
+  const profilecontainer = document.getElementById('profileContainer')
+  profilecontainer.classList.remove("show")
+overlay.classList.remove("active")
+  alert("Logged out successfully!");
+  showHeader();
+  showPage("home");
+});
+
+// Initial load
+showHeader();
+showPage("home");
+
+
+  
+//   //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
+
+ 
+// 
+function userupdate(){
+  const currentuser = JSON.parse(localStorage.getItem("loggedInUser"))
+  console.log(currentuser);
+  
+  document.getElementById("user-name-email").textContent = currentuser?.username
+  document.getElementById("user-name-text").textContent = currentuser?.name
+}
+userupdate()
+
+
+const verifyEl = document.getElementById("forgotVerifie")
+verifyEl.addEventListener('click',() => {
+  const users = JSON.parse(localStorage.getItem("users"));
+        console.log(users);
+        const email = document.getElementById("forgot-username").value
+        if (!users) {
+          alert("No users found in the database");
+          return;
+        }
+        const isUserSaved = users.find((user) => user.username === email);
+        console.log(email,isUserSaved);
+        
+        if (isUserSaved) {
+          document.getElementById("forgot-passwordContainer").style.display = "block";
+          document.getElementById("forgotVerifie").style.display = "none";
+          document.getElementById("forgotsubmit").style.display =
+            "block";
+          // verifyBtn.style.display = "none";
+          // document.getElementById("forgotten-username").disabled = "disabled";
+        } else {
+          alert("User is not registered");
+        }
+})
+
+
+function updatefotgotpage(){
+  document.getElementById("forgotsubmit").style.display = "none"
+  document.getElementById("forgot-passwordContainer").style.display = "none" 
+  document.getElementById("forgotVerifie").style.display = "block" 
+   
+  
+}
+
+updatefotgotpage()
+
+ const forgottenFormEl = document.getElementById("forgot-form")
+// 
+forgottenFormEl.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById("forgot-username").value;
+  const password = document.getElementById("forgot-password").value;
+  
+
+  if (
+    !/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}/.test(
+      password
+    )
+  ) {
+    alert(
+      "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character."
+    );
+    return;
+  }
+  const users = JSON.parse(localStorage.getItem("users"));
+  console.log(users);
+  const userIndex = users.findIndex((user) => user.username === email);
+
+  if (userIndex !== -1) {
+    // User found, update their username and password
+    users[userIndex].password = password;
+
+    // Update users array in localStorage
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("User Password Updated Successfully!");
+    userupdate();
+    forgottenFormEl.reset();
+    loginForm.reset();
+
+    // Optionally redirect or display the home page
+    showPage("login");
+  }
+
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+});
+
+// new script
+// script.js
+
+// new script
+
+
+</script>
+    
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<!-- custom js file link      -->
+<script>
+
+    lightGallery(document.querySelector('.gallery .lightbox'));
+
+ let navbar = document.querySelector('.navbar');
+
+
+
+document.querySelector('#close-navbar').onclick = () =>{
+  navbar.classList.remove('active');
+}
+
+
+
+window.onscroll = () =>{
+  navbar.classList.remove('active');
+
+};
+
+let slides = document.querySelectorAll('.home .slide');
+let index = 0;
+
+function next(){
+  slides[index].classList.remove('active');
+  index = (index + 1) % slides.length;
+  slides[index].classList.add('active');
+}
+
+function prev(){
+  slides[index].classList.remove('active');
+  index = (index - 1 + slides.length) % slides.length;
+  slides[index].classList.add('active');
+};
+
+var swiper = new Swiper(".products-slider", {
+  loop: true,
+  grabCursor : true,
+  spaceBetween: 20,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+    },
+    550: {
+      slidesPerView: 2,
+    },
+    850: {
+      slidesPerView: 3,
+    },
+    1200: {
+      slidesPerView: 4,
+    },
+  },
+});
+
+var swiper = new Swiper(".arrivals-slider", {
+  loop: true,
+  grabCursor : true,
+  spaceBetween: 20,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+    },
+    550: {
+      slidesPerView: 2,
+    },
+    850: {
+      slidesPerView: 3,
+    },
+    1200: {
+      slidesPerView: 4,
+    },
+  },
+});
+
+var swiper = new Swiper(".reviews-slider", {
+  loop: true,
+  grabCursor : true,
+  spaceBetween: 20,
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    991: {
+      slidesPerView: 3,
+    },
+  },
+});
+
+var swiper = new Swiper(".blogs-slider", {
+  loop: true,
+  grabCursor : true,
+  spaceBetween: 20,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+    },
+    650: {
+      slidesPerView: 2,
+    },
+    1200: {
+      slidesPerView: 3,
+    },
+  },
+}); 
+
+// 
+// 
+// 
+// 
+// search
+const products = [
+    {
+        id: 1,
+        name: "Matte Lipstick",
+        category: "lipstick",
+        brand: "brand1",
+        price: 20.99,
+        image: "https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733927111/s1_nu7zdr.jpg",
+        description: "A long-lasting matte lipstick with a rich color.",
+        reviews: [
+            { rating: 5, comment: "Love this lipstick! It stays on all day." },
+            { rating: 4, comment: "Great color, but a bit dry." }
+        ]
+    },
+    {
+        id: 2,
+        name: "Luxury Eyeshadow Palette",
+        category: "eyeshadow",
+        brand: "brand2",
+        price: 35.99,
+        image: "https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733927227/s2_g0s6uq.jpg",
+        description: "A luxurious eyeshadow palette with 12 stunning shades.",
+        reviews: [
+            { rating: 5, comment: "Beautiful colors, very pigmented!" },
+            { rating: 4, comment: "Love the shades, but a little bit of fallout." }
+        ]
+    },
+    {
+        id: 3,
+        name: "Full Coverage Foundation",
+        category: "foundation",
+        brand: "brand3",
+        price: 29.99,
+        image: "https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733929034/s3_hwntdm.jpg",
+        description: "A foundation that gives full coverage with a natural finish.",
+        reviews: [
+            { rating: 4, comment: "Good coverage, but feels a bit heavy." },
+            { rating: 3, comment: "Not the best for my skin type." }
+        ]
+    },
+    {
+        id: 4,
+        name: "Flushed Blush",
+        category: "blush",
+        brand: "brand1",
+        price: 18.99,
+        image: "https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733929035/s4_pperlw.jpg",
+        description: "A powder blush that gives you a natural flush of color.",
+        reviews: [
+            { rating: 5, comment: "Perfect shade for my skin tone!" },
+            { rating: 4, comment: "Nice blush, but a little too shimmery." }
+        ]
+    },
+    {
+    id: 5,
+    name: "Velvet Matte Lipstick",
+    category: "lipstick",
+    brand: "brand2",
+    price: 22.99,
+    image: "https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733933011/s5_txl6nn.jpg",    
+    description: "A smooth velvet matte lipstick that delivers rich color and hydration.",
+    reviews: [
+        { rating: 5, comment: "Love the texture and color. Stays all day!" },
+        { rating: 4, comment: "Beautiful color, but needs a little touch-up after meals." }
+    ]
+},
+{
+    id: 6,
+    name: "Shimmering Eyeshadow",
+    category: "eyeshadow",
+    brand: "brand3",
+    price: 19.99,
+    image: "https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733929039/s6_zirbq0.jpg",
+    description: "A shimmering eyeshadow that adds a pop of sparkle to your eyes.",
+    reviews: [
+        { rating: 5, comment: "Perfect shimmer for evening looks!" },
+        { rating: 4, comment: "Really nice, but a bit more fallout than expected." }
+    ]
+},
+{
+    id: 7,
+    name: "Matte Finish Foundation",
+    category: "foundation",
+    brand: "brand2",
+    price: 30.49,
+    image:"https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733929036/s7_iskuzx.jpg",
+    description: "A foundation with a matte finish that provides full coverage.",
+    reviews: [
+        { rating: 5, comment: "Great for oily skin! Lasts all day without getting shiny." },
+        { rating: 4, comment: "Good coverage but feels a bit heavy." }
+    ]
+},
+{
+    id: 8,
+    name: "Rosy Glow Blush",
+    category: "blush",
+    brand: "brand3",
+    price: 17.49,
+    image:"https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733933186/s8_lvg6co.jpg",
+    description: "A soft blush that adds a natural rosy glow to your cheeks.",
+    reviews: [
+        { rating: 5, comment: "This blush is my go-to! Perfect natural flush." },
+        { rating: 4, comment: "Nice blush, but the color is a bit too light for darker skin." }
+    ]
+},
+{
+    id: 9,
+    name: "Shiny Lip Gloss",
+    category: "lipstick",
+    brand: "brand1",
+    price: 15.99,
+    image:"https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733930079/s9_dzkgdy.jpg",
+    description: "A glossy lip gloss that gives your lips a smooth and shiny finish.",
+    reviews: [
+        { rating: 5, comment: "Love the shine, and it's not sticky at all!" },
+        { rating: 4, comment: "Good gloss, but the flavor could be better." }
+    ]
+},
+{
+    id: 10,
+    name: "Volumizing Mascara",
+    category: "mascara",
+    brand: "brand2",
+    price: 21.99,
+    image:"https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733929041/s10_a0foyx.jpg",
+    description: "A mascara that provides long-lasting volume and definition.",
+    reviews: [
+        { rating: 5, comment: "Perfect volume and lasts all day!" },
+        { rating: 4, comment: "Good mascara, but clumps a little after a few coats." }
+    ]
+},
+{
+    id: 11,
+    name: "Long-Lasting Setting Spray",
+    category: "setting spray",
+    brand: "brand3",
+    price: 18.99,
+    image:"https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733932674/s11_bn0bdi.jpg",
+    description: "A setting spray that locks makeup in place all day long.",
+    reviews: [
+        { rating: 5, comment: "Keeps my makeup intact for hours, love it!" },
+        { rating: 4, comment: "Great setting spray, but a bit too sticky." }
+    ]
+},
+{
+    id: 12,
+    name: "Hydrating Tinted Moisturizer",
+    category: "foundation",
+    brand: "brand1",
+    price: 25.99,
+    image:"https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733929036/s12_rfvu4x.jpg",
+    description: "A lightweight tinted moisturizer that provides light coverage and hydration.",
+    reviews: [
+        { rating: 5, comment: "Perfect for a natural look, and it feels so light on the skin!" },
+        { rating: 4, comment: "Great moisturizer, but not enough coverage for blemishes." }
+    ]
+},
+];
+
+function displayProducts(filteredProducts) {
+    const catalog = document.getElementById('productCatalog');
+    catalog.innerHTML = ''; // Clear previous results
+
+    filteredProducts.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.classList.add('product-card');
+        
+        const productHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <div class="info">
+                <h3>${product.name}</h3>
+                <p>${product.description}</p>
+                <p class="price">$${product.price.toFixed(2)}</p>
+                <div class="reviews">
+                    ${getAverageRating(product.reviews)}<br>
+                    ${product.reviews.length} Reviews
+                </div>
+            </div>
+        `;
+
+        productCard.innerHTML = productHTML;
+        catalog.appendChild(productCard);
+    });
+}
+
+function getAverageRating(reviews) {
+    if (reviews.length === 0) return "No reviews yet.";
+    const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+    const avgRating = totalRating / reviews.length;
+    const stars = "★".repeat(Math.round(avgRating)) + "☆".repeat(5 - Math.round(avgRating));
+    return `<span>${stars}</span> (${avgRating.toFixed(1)})`;
+}
+
+function searchProducts() {
+    const searchQuery = document.getElementById('search').value.toLowerCase();
+    const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchQuery));
+    displayProducts(filteredProducts);
+}
+
+function filterProducts() {
+    const category = document.getElementById('categoryFilter').value;
+    const brand = document.getElementById('brandFilter').value;
+    
+    let filteredProducts = products;
+    
+    if (category) {
+        filteredProducts = filteredProducts.filter(product => product.category === category);
+    }
+
+    if (brand) {
+        filteredProducts = filteredProducts.filter(product => product.brand === brand);
+    }
+
+    displayProducts(filteredProducts);
+}
+
+// Initial display of all products
+displayProducts(products);
+
+// 
+// community
+// Toggle Like and Dislike functionality (Like/Dislike buttons act like Follow button)
+function toggleLikeDislike(button) {
+    const likeButton = button.closest('.post-actions').querySelector('.like-button');
+    const dislikeButton = button.closest('.post-actions').querySelector('.dislike-button');
+    const followButton = button.closest('.post-actions').querySelector('.follow-button');
+
+    // Toggle like/dislike states
+    if (button === likeButton) {
+        likeButton.classList.toggle('active');
+        likeButton.classList.toggle('inactive');
+    } else if (button === dislikeButton) {
+        dislikeButton.classList.toggle('active');
+        dislikeButton.classList.toggle('inactive');
+    }
+
+    // Show the popup for Like or Dislike
+    displayPopup();
+}
+
+// Show Like/Dislike popup
+function displayPopup() {
+    const popup = document.getElementById('like-dislike-popup');
+    const message = document.getElementById('popup-message');
+    message.textContent = "You liked or disliked this post!";
+    popup.style.display = 'block';
+}
+
+// Close the Like/Dislike popup
+function closePopup() {
+    const popup = document.getElementById('like-dislike-popup');
+    popup.style.display = 'none';
+}
+
+// Share post (Share image as a link)
+function shareContent(button) {
+    const postImage = button.closest('.single-post').querySelector('img');
+    const postTitle = button.closest('.single-post').querySelector('h3').innerText;
+    const postDescription = button.closest('.single-post').querySelector('p').innerText;
+    
+    const postUrl = window.location.href; // Use the current page URL for sharing
+    
+    // Using the Web Share API
+    if (navigator.share) {
+        navigator.share({
+            title: postTitle,
+            text: postDescription,
+            url: postUrl
+        }).then(() => {
+            console.log('Post shared successfully');
+        }).catch((error) => {
+            console.log('Error sharing the post:', error);
+        });
+    } else {
+        alert("Web Share API not supported in your browser.");
+    }
+}
+
+// Add a new post to the gallery
+function createPost() {
+    const fileUpload = document.getElementById('file-upload');
+    const file = fileUpload.files[0];
+
+    if (!file) {
+        alert('Please upload an image.');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const imageUrl = e.target.result;
+        const gallery = document.getElementById('post-gallery');
+
+        const newPost = document.createElement('div');
+        newPost.classList.add('single-post');
+        newPost.innerHTML = `
+            <img src="${imageUrl}" alt="New Makeup Look">
+            <h3>New Makeup Look</h3>
+            <p>Shared by @newuser</p>
+            <div class="post-actions">
+                <button class="like-button" onclick="toggleLikeDislike(this)"><i class="fas fa-thumbs-up"></i> Like</button>
+                <button class="dislike-button" onclick="toggleLikeDislike(this)"><i class="fas fa-thumbs-down"></i> Dislike</button>
+                <button class="share-button" onclick="shareContent(this)"><i class="fas fa-share-alt"></i> Share</button>
+                <button class="delete-button" onclick="removePost(this)"><i class="fas fa-trash"></i> Delete</button>
+                <button class="follow-button" onclick="toggleFollow(this)">Follow</button>
+            </div>
+            <div class="comments-section">
+                <input type="text" placeholder="Add a comment..." class="comment-input">
+                <button onclick="addComment(this)">Post Comment</button>
+                <ul class="comment-list"></ul>
+            </div>
+        `;
+        
+        gallery.appendChild(newPost);
+        fileUpload.value = ''; // Clear file input after upload
+    };
+
+    reader.readAsDataURL(file);
+}
+
+// Remove a post from the gallery
+function removePost(button) {
+    const post = button.closest('.single-post');
+    post.remove();
+}
+
+// Add a comment to a post
+function addComment(button) {
+    const commentInput = button.closest('.comments-section').querySelector('.comment-input');
+    const commentText = commentInput.value.trim();
+
+    if (commentText === "") {
+        alert("Please enter a comment.");
+        return;
+    }
+
+    const commentList = button.closest('.comments-section').querySelector('.comment-list');
+    const newComment = document.createElement('li');
+    newComment.innerHTML = `
+        ${commentText} <button onclick="deleteComment(this)">Delete</button>
+    `;
+    commentList.appendChild(newComment);
+    commentInput.value = ""; // Clear input field after adding the comment
+}
+
+// Delete a comment
+function deleteComment(button) {
+    const comment = button.closest('li');
+    comment.remove();
+}
+
+// Toggle Follow and Unfollow button states
+function toggleFollow(button) {
+    if (button.textContent === "Follow") {
+        button.textContent = "Unfollow";
+        button.classList.add('active');
+        button.classList.remove('inactive');
+    } else {
+        button.textContent = "Follow";
+        button.classList.add('inactive');
+        button.classList.remove('active');
+    }
+}
+
+// 
+// 
+// review
+let reviews = [];
+        let totalRating = 0;
+
+        // Function to submit the review
+        function submitReview() {
+            const rating = document.getElementById("rating").value;
+            const reviewText = document.getElementById("review").value;
+            const imageFile = document.getElementById("image").files[0];
+
+            if (rating && reviewText) {
+                const review = {
+                    rating: parseInt(rating),
+                    reviewText,
+                    imageFile,
+                };
+
+                reviews.push(review);
+                totalRating += review.rating;
+
+                // Add the review to the page
+                displayReviews();
+
+                // Clear form after submission
+                document.getElementById("rating").value = "";
+                document.getElementById("review").value = "";
+                document.getElementById("image").value = "";
+            }
+        }
+
+        // Function to display all reviews
+        function displayReviews() {
+            const reviewsList = document.getElementById("reviews-list");
+            reviewsList.innerHTML = "";
+
+            reviews.forEach((review, index) => {
+                const reviewItem = document.createElement("div");
+                reviewItem.classList.add("review-item");
+                reviewItem.innerHTML = `
+                    <h3>Rating: ${review.rating} / 5</h3>
+                    <p>${review.reviewText}</p>
+                    ${review.imageFile ? `<img src="${URL.createObjectURL(review.imageFile)}" alt="Review Image" style="max-width: 200px;">` : ""}
+                    <button class="delete-button" onclick="deleteReview(${index})">Delete Review</button>
+                    <div class="rating">Rating: ${review.rating}</div>
+                `;
+                reviewsList.appendChild(reviewItem);
+            });
+
+            // Calculate and display average rating
+            const averageRating = reviews.length > 0 ? (totalRating / reviews.length).toFixed(2) : 0;
+            document.getElementById("average-rating").textContent = averageRating;
+        }
+
+        // Function to delete a review
+        function deleteReview(index) {
+            const review = reviews[index];
+            totalRating -= review.rating;
+            reviews.splice(index, 1);
+            displayReviews();
+        }
+// 
+// 
+// achivemet
+// Mock user data
+const user = {
+  username: "beautyguru",
+  makeupTries: 5,
+  favoriteProducts: 3,
+  badges: ["Beginner", "Reviewer", "Explorer"],
+  reviews: [],
+  notifications: [
+      "New product launch! Check out the latest collection of lipsticks.",
+      "Product restock alert: Your favorite foundation is back in stock!"
+  ]
+};
+
+// Set user details on the dashboard
+document.getElementById("username-display").textContent = `@${user.username}`;
+document.getElementById("user-image").src = `https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733984809/c1_ne3sya.jpg`; // Replace with user profile image URL
+document.getElementById("makeup-tries").textContent = user.makeupTries;
+document.getElementById("favorite-products").textContent = user.favoriteProducts;
+
+// Display badges dynamically with images
+const badgesContainer = document.getElementById("user-badges");
+const badgeImages = {
+  "Beginner": "https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733996808/b1_aaxvh5.jpg",
+  "Reviewer": "https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733996444/b2_jccola.jpg",
+  "Explorer": "https://res.cloudinary.com/dbtlrnyg5/image/upload/v1733996445/b3_zanmqx.jpg"
+};
+
+user.badges.forEach(badge => {
+  const badgeElement = document.createElement("img");
+  badgeElement.src = badgeImages[badge];
+  badgeElement.alt = badge;
+  badgeElement.classList.add("badge-img");
+  badgesContainer.appendChild(badgeElement);
+});
+
+// Add new review
+document.getElementById("submit-review-btn").addEventListener("click", () => {
+  const reviewText = document.getElementById("review-text").value;
+  if (reviewText.trim()) {
+      const newReview = {
+          id: Date.now(),  // Unique ID based on timestamp
+          text: reviewText
+      };
+      user.reviews.push(newReview);
+      updateReviews();
+      document.getElementById("review-text").value = '';  // Clear the textarea
+      alert("Review submitted successfully!");
+  } else {
+      alert("Please write a review before submitting.");
+  }
+});
+
+// Update reviews list
+function updateReviews() {
+  const reviewsContainer = document.getElementById("reviews-container");
+  reviewsContainer.innerHTML = ''; // Clear existing reviews
+
+  user.reviews.forEach(review => {
+      const reviewItem = document.createElement("div");
+      reviewItem.classList.add("review-item");
+      reviewItem.innerHTML = `
+          <p>${review.text}</p>
+          <button class="delete-review-btn" onclick="deleteReview(${review.id})">Delete</button>
+      `;
+      reviewsContainer.appendChild(reviewItem);
+  });
+}
+
+// Delete review
+function deleteReview(reviewId) {
+  user.reviews = user.reviews.filter(review => review.id !== reviewId);
+  updateReviews();
+  alert("Review deleted successfully.");
+}
+
+// Track process when a user interacts with buttons
+document.getElementById("try-product-btn").addEventListener("click", () => {
+  user.makeupTries += 1;
+  document.getElementById("makeup-tries").textContent = user.makeupTries;
+  alert("Product tried successfully!");
+});
+
+// 
+// 
+// 
+// choose
+// Update profile picture
+const fileInput = document.getElementById("file-input");
+const profileImg = document.getElementById("profile-img");
+
+// Event listener for profile picture change
+fileInput.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            profileImg.src = event.target.result; // Display the selected image
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// AR Filter and Effect customization
+const filterSelect = document.getElementById("filter-select");
+const effectSelect = document.getElementById("effect-select");
+const appliedFilter = document.getElementById("applied-filter");
+const appliedEffect = document.getElementById("applied-effect");
+const resetButton = document.getElementById("reset-btn");
+
+// Apply AR filter and effect when selected
+filterSelect.addEventListener("change", applyArCustomizations);
+effectSelect.addEventListener("change", applyArCustomizations);
+
+function applyArCustomizations() {
+    const selectedFilter = filterSelect.value;
+    const selectedEffect = effectSelect.value;
+
+    // Apply AR filter
+    let filterValue = "none";
+    if (selectedFilter === "sepia") {
+        filterValue = "sepia(1)";
+    } else if (selectedFilter === "grayscale") {
+        filterValue = "grayscale(1)";
+    } else if (selectedFilter === "vintage") {
+        filterValue = "saturate(0.5) contrast(1.2)";
+    }
+
+    // Apply AR effect (simulating on a demo image)
+    const demoImage = document.getElementById("profile-img");
+    demoImage.style.filter = filterValue;
+
+    let effectValue = "";
+    if (selectedEffect === "blur") {
+        effectValue = "blur(5px)";
+    } else if (selectedEffect === "glow") {
+        effectValue = "drop-shadow(0 0 15px rgba(255, 0, 0, 0.6))";
+    } else if (selectedEffect === "sketch") {
+        effectValue = "grayscale(100%)";
+    }
+
+    demoImage.style.filter += " " + effectValue;
+
+    // Display applied filter and effect
+    appliedFilter.textContent = "Filter: " + selectedFilter.charAt(0).toUpperCase() + selectedFilter.slice(1);
+    appliedEffect.textContent = "Effect: " + selectedEffect.charAt(0).toUpperCase() + selectedEffect.slice(1);
+}
+
+// Reset customizations
+resetButton.addEventListener("click", () => {
+    // Reset image filters
+    const demoImage = document.getElementById("profile-img");
+    demoImage.style.filter = "none";
+
+    // Reset selections
+    filterSelect.value = "none";
+    effectSelect.value = "none";
+
+    // Clear applied customizations display
+    appliedFilter.textContent = "Filter: None";
+    appliedEffect.textContent = "Effect: None";
+});
+
+// Show saved settings in the popup
+const saveSettingsBtn = document.getElementById("save-settings-btn");
+const popup = document.getElementById("popup");
+const closePopupBtn = document.getElementById("close-popup-btn");
+
+// Event listener to show popup with saved settings
+saveSettingsBtn.addEventListener("click", () => {
+    const username = document.getElementById("username").value;
+    const bio = document.getElementById("bio").value;
+    const appliedFilterText = appliedFilter.textContent.split(":")[1].trim();
+    const appliedEffectText = appliedEffect.textContent.split(":")[1].trim();
+
+    // Set saved data in the popup
+    document.getElementById("saved-profile-img").src = profileImg.src;
+    document.getElementById("saved-username").textContent = username;
+    document.getElementById("saved-bio").textContent = bio;
+    document.getElementById("saved-filter").textContent = appliedFilterText;
+    document.getElementById("saved-effect").textContent = appliedEffectText;
+
+    // Show the popup
+    popup.style.display = "flex";
+});
+
+// Event listener to close the popup
+closePopupBtn.addEventListener("click", () => {
+    popup.style.display = "none";
+});
+
+
+// 
+// 
+// notification
+document.getElementById('set-reminder-btn').addEventListener('click', function() {
+  const eventName = document.getElementById('event-name').value;
+  const reminderDate = document.getElementById('reminder-date').value;
+
+  if (eventName && reminderDate) {
+      // Add reminder to the list
+      const reminderList = document.getElementById('reminder-list');
+      const reminderItem = document.createElement('li');
+      reminderItem.textContent = `${eventName} at ${reminderDate}`;
+      reminderList.appendChild(reminderItem);
+
+      // Set reminder notification to trigger at the chosen time
+      const reminderTime = new Date(reminderDate).getTime();
+      const currentTime = new Date().getTime();
+      const timeUntilReminder = reminderTime - currentTime;
+
+      if (timeUntilReminder > 0) {
+          setTimeout(function() {
+              showNotification(eventName, reminderDate);
+          }, timeUntilReminder);
+      } else {
+          alert("The event time has already passed. Please select a future date.");
+      }
+  } else {
+      alert("Please enter both event name and date.");
+  }
+});
+
+function showNotification(eventName, reminderDate) {
+  // Display the popup notification with the event details
+  const popup = document.getElementById('notification-popup');
+  const message = document.getElementById('notification-message');
+  message.textContent = `Reminder: ${eventName} is happening on ${reminderDate}`;
+
+  popup.style.display = 'flex';
+}
+
+document.getElementById('close-popup-btn').addEventListener('click', function() {
+  // Close the popup
+  document.getElementById('notification-popup').style.display = 'none';
+});
+
+// 
+// 
+// 
+// help & support
+// Toggle FAQ answer visibility
+function toggleFaq(element) {
+  const faqAnswer = element.nextElementSibling;
+  const faqToggle = element.querySelector('.faq-toggle');
+
+  if (faqAnswer.style.display === 'block') {
+      faqAnswer.style.display = 'none';
+      faqToggle.textContent = '+';
+  } else {
+      faqAnswer.style.display = 'block';
+      faqToggle.textContent = '-';
+  }
+}
+
+// Handle feedback form submission
+document.getElementById('feedback-form').addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  const feedbackType = document.getElementById('feedback-type').value;
+  const feedbackMessage = document.getElementById('feedback-message').value;
+
+  if (feedbackMessage.trim() !== '') {
+      document.getElementById('feedback-status').textContent =
+          `Thank you for your ${feedbackType}! We appreciate your feedback.`;
+
+      // Reset the form
+      this.reset();
+  } else {
+      alert('Please enter your feedback before submitting.');
+  }
+});
+
+// 
+// 
+// 
+// camara
+const video = document.getElementById('camera-stream');
+const lipstickOverlay = document.querySelector('.lipstick-overlay');
+const eyebrowOverlay = document.querySelector('.eyebrow-overlay');
+const foundationOverlay = document.querySelector('.foundation-overlay');
+const hairstyleOverlay = document.querySelector('.hairstyle-overlay');
+
+const lipstickColorPicker = document.getElementById('lipstick-color');
+const eyebrowColorPicker = document.getElementById('eyebrow-color');
+const foundationColorPicker = document.getElementById('foundation-color');
+const hairstyleSelect = document.getElementById('hairstyle-select');
+const makeupStyleSelect = document.getElementById('makeup-style-select');
+
+const saveSettingBtn = document.getElementById('save-settings');
+const downloadLookBtn = document.getElementById('download-look');
+const savedContainer = document.getElementById('saved-container');
+
+// Start Camera Stream
+async function startCamera() {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+    } catch (error) {
+        console.error('Error accessing camera:', error);
+    }
+}
+
+// Update Overlays
+lipstickColorPicker.addEventListener('input', () => {
+    lipstickOverlay.style.backgroundColor = lipstickColorPicker.value;
+});
+
+eyebrowColorPicker.addEventListener('input', () => {
+    eyebrowOverlay.style.backgroundColor = eyebrowColorPicker.value;
+});
+
+foundationColorPicker.addEventListener('input', () => {
+    foundationOverlay.style.backgroundColor = foundationColorPicker.value;
+});
+
+hairstyleSelect.addEventListener('change', () => {
+    const hairstyle = hairstyleSelect.value;
+    hairstyleOverlay.style.display = hairstyle === 'none' ? 'none' : 'block';
+    hairstyleOverlay.style.backgroundImage = `url(${hairstyle}.png)`;
+});
+
+// Save Current Settings
+saveSettingBtn.addEventListener('click', () => {
+    const look = {
+        lipstickColor: lipstickColorPicker.value,
+        eyebrowColor: eyebrowColorPicker.value,
+        foundationColor: foundationColorPicker.value,
+        hairstyle: hairstyleSelect.value,
+        makeupStyle: makeupStyleSelect.value,
+    };
+    addSavedLook(look);
+});
+
+// Add Saved Look
+function addSavedLook(look) {
+    const lookElement = document.createElement('div');
+    lookElement.classList.add('saved-look');
+
+    lookElement.innerHTML = `
+        <div>
+            <p>Lipstick: ${look.lipstickColor}</p>
+            <p>Eyebrows: ${look.eyebrowColor}</p>
+            <p>Foundation: ${look.foundationColor}</p>
+            <p>Hairstyle: ${look.hairstyle}</p>
+            <p>Makeup Style: ${look.makeupStyle}</p>
+        </div>
+        <div>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+        </div>
+    `;
+
+    savedContainer.appendChild(lookElement);
+
+    // Edit Look
+    lookElement.querySelector('.edit-btn').addEventListener('click', () => {
+        lipstickColorPicker.value = look.lipstickColor;
+        eyebrowColorPicker.value = look.eyebrowColor;
+        foundationColorPicker.value = look.foundationColor;
+        hairstyleSelect.value = look.hairstyle;
+        makeupStyleSelect.value = look.makeupStyle;
+    });
+
+    // Delete Look
+    lookElement.querySelector('.delete-btn').addEventListener('click', () => {
+        lookElement.remove();
+    });
+}
+
+// Download Current Look
+downloadLookBtn.addEventListener('click', () => {
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    link.download = 'my-makeup-look.png';
+    link.click();
+});
+
+// Initialize
+startCamera();
+
+// 
+// 
+// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+    
+    
+    
+    
+  </body>
+</html>
